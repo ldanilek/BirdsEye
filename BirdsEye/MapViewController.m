@@ -7,8 +7,11 @@
 //
 
 #import "MapViewController.h"
+#import <MapBox/Mapbox.h>
 
 @interface MapViewController ()
+
+@property (weak, nonatomic) IBOutlet MGLMapView *mapView;
 
 @end
 
