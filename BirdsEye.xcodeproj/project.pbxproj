@@ -18,6 +18,7 @@
 		9B388C061D970CAF00D0C71E /* RequestModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B388C051D970CAF00D0C71E /* RequestModule.m */; };
 		9B388C091D970CEC00D0C71E /* LocationModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B388C081D970CEC00D0C71E /* LocationModule.m */; };
 		9BE161C61D971A42001691CA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE161C51D971A42001691CA /* CoreLocation.framework */; };
+		9BE161CC1D97236D001691CA /* GroupsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE161CB1D97236D001691CA /* GroupsTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,8 @@
 		9B388C071D970CEC00D0C71E /* LocationModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationModule.h; sourceTree = "<group>"; };
 		9B388C081D970CEC00D0C71E /* LocationModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationModule.m; sourceTree = "<group>"; };
 		9BE161C51D971A42001691CA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9BE161CA1D97236D001691CA /* GroupsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupsTableViewController.h; sourceTree = "<group>"; };
+		9BE161CB1D97236D001691CA /* GroupsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,8 @@
 				9B388BF41D9709A700D0C71E /* ViewController.m */,
 				495517F71D97136C00A01FC3 /* MapViewController.h */,
 				495517F51D97133D00A01FC3 /* MapViewController.m */,
+				9BE161CA1D97236D001691CA /* GroupsTableViewController.h */,
+				9BE161CB1D97236D001691CA /* GroupsTableViewController.m */,
 				9B388C041D970CAF00D0C71E /* RequestModule.h */,
 				9B388C051D970CAF00D0C71E /* RequestModule.m */,
 				9B388C071D970CEC00D0C71E /* LocationModule.h */,
@@ -185,6 +190,7 @@
 				9B388C061D970CAF00D0C71E /* RequestModule.m in Sources */,
 				495517F61D97133D00A01FC3 /* MapViewController.m in Sources */,
 				9B388BF21D9709A700D0C71E /* AppDelegate.m in Sources */,
+				9BE161CC1D97236D001691CA /* GroupsTableViewController.m in Sources */,
 				9B388BEF1D9709A700D0C71E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
