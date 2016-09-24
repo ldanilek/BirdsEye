@@ -10,4 +10,12 @@
 
 @interface LocationModule : NSObject
 
+- (double)currentLatitude;
+- (double)currentLongitude;
+
+// in meters per second
+- (double)currentSpeed;
+// in degrees relative to true-north
+- (double)currentDirection;
+
 @end

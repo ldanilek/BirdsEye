@@ -10,6 +10,20 @@
 
 @implementation LocationModule
 
+- (double)currentLatitude {
+    return 0;
+}
 
+- (double)currentLongitude {
+    return 0;
+}
+
+- (double)currentSpeed {
+    return 0;
+}
+
+- (double)currentDirection {
+    return 0;
+}
 
 @end
