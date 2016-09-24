@@ -12,8 +12,17 @@
 @implementation RequestModule
 
 
++ (RequestModule *)sharedModule {
+    static RequestModule *module = nil;
+    if (!module) {
+        module = [[self alloc] init];
+    }
+    return module;
+}
 
-- (void) connectBackEnd: (NSInteger) user_id andgroup_id: (NSInteger) group_id
+
+
+- (void) connectBackEnd: (NSInteger) userID andGroupID: (NSInteger) groupID
 {
     // configures NSURL session
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -22,7 +31,7 @@
     // creates NSURL request
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
                                     initWithURL:[NSURL
-                                                 URLWithString:@"to-be-filled-in-later.com"]];
+                                                 URLWithString:@"http://127.0.0.1:8080"]];
     
     
     // initializes location module object
@@ -30,8 +39,8 @@
     
     // initializes NSDictionary object to use for creating a JSON
     NSMutableDictionary *dict= [@{
-                                  @"user_ID" : @(user_id),
-                                  @"group_ID" : @(group_id),
+                                  @"user_ID" : @(userID),
+                                  @"group_ID" : @(groupID),
                                   @"latitude" : @(module.latitude),
                                   @"longitude" : @(module.longitude),
                                   @"uncertaintyRadius" : @(module.uncertaintyRadius),
@@ -61,8 +70,6 @@
 
     
 }
-
-
 
 
 
