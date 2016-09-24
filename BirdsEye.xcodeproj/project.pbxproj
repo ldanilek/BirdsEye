@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		495517F41D97100800A01FC3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495517F31D97100800A01FC3 /* MapKit.framework */; };
 		9B388BEF1D9709A700D0C71E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B388BEE1D9709A700D0C71E /* main.m */; };
 		9B388BF21D9709A700D0C71E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B388BF11D9709A700D0C71E /* AppDelegate.m */; };
 		9B388BF51D9709A700D0C71E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B388BF41D9709A700D0C71E /* ViewController.m */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		495517F31D97100800A01FC3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9B388BEA1D9709A700D0C71E /* BirdsEye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BirdsEye.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B388BEE1D9709A700D0C71E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9B388BF01D9709A700D0C71E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -39,17 +41,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				495517F41D97100800A01FC3 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		495517F21D97100800A01FC3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				495517F31D97100800A01FC3 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9B388BE11D9709A700D0C71E = {
 			isa = PBXGroup;
 			children = (
 				9B388BEC1D9709A700D0C71E /* BirdsEye */,
 				9B388BEB1D9709A700D0C71E /* Products */,
+				495517F21D97100800A01FC3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -312,6 +324,7 @@
 				9B388C031D9709A700D0C71E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
