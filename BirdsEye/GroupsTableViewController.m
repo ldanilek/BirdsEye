@@ -50,6 +50,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"group-cell" forIndexPath:indexPath];
     
+    cell.textLabel.text = self.groupNames[indexPath.row];
     // Configure the cell...
     
     return cell;
