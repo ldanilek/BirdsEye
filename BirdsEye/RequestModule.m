@@ -14,11 +14,11 @@
 {
 
     NSDictionary *dict= @{
-                                 @"user_ID" : user_id,
-                                 @"group_ID" : group_id,
-                                 @"latitude" : latitude,
-                                 @"longitude" : longitude,
-                                 @"precision" : longitude,
+                                 @"user_ID" : @(user_id),
+                                 @"group_ID" : @(group_id),
+                                 @"latitude" : @(latitude),
+                                 @"longitude" : @longitude,
+                                 @"precision" : @longitude,
                                  @"speed" : speed,
                                  @"direction": direction,
                                  @"location" : location
