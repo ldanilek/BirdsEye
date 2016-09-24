@@ -75,6 +75,7 @@
 		495517F21D97100800A01FC3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				495517FF1D97224500A01FC3 /* Mapbox.framework */,
 				9BE161C51D971A42001691CA /* CoreLocation.framework */,
 				495517F31D97100800A01FC3 /* MapKit.framework */,
 			);
@@ -84,7 +85,6 @@
 		9B388BE11D9709A700D0C71E = {
 			isa = PBXGroup;
 			children = (
-				495517FF1D97224500A01FC3 /* Mapbox.framework */,
 				9B388BEC1D9709A700D0C71E /* BirdsEye */,
 				9B388BEB1D9709A700D0C71E /* Products */,
 				495517F21D97100800A01FC3 /* Frameworks */,
