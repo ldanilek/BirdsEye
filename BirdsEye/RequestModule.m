@@ -7,47 +7,62 @@
 //
 
 #import "RequestModule.h"
+#import "LocationModule.h"
 
 @implementation RequestModule
 
-// creates a JSON object to be passed to the back-end
-//optional parameters: speed and direction but if have one, need to include the others
-- (NSData *) createJSONObject: (NSInteger) user_id andgroup_id: (NSInteger) group_id andlat: (double) latitude andlong: (double) longitude andprecision: (double) precision andspeed: (double) speed anddirection: (double) direction andloc: (NSNumber*) location
+
+
+- (void) connectBackEnd: (NSInteger) user_id andgroup_id: (NSInteger) group_id
 {
-    //TODO: use the shared moduel to call Lee's method instead of passing it all in the method parameters
+    // configures NSURL session
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+    
+    // creates NSURL request
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
+                                    initWithURL:[NSURL
+                                                 URLWithString:@"to-be-filled-in-later.com"]];
+    
+    
+    // initializes location module object
+    LocationModule * module = [LocationModule sharedModule];
+    
+    // initializes NSDictionary object to use for creating a JSON
     NSMutableDictionary *dict= [@{
-                                 @"user_ID" : @(user_id),
-                                 @"group_ID" : @(group_id),
-                                 @"latitude" : @(latitude),
-                                 @"longitude" : @(longitude),
-                                 @"precision" : @(precision),
-                                 @"speed" : @(speed),
-                                 @"direction": @(direction),
-                                 @"location" : location
-                                 }mutableCopy];
+                                  @"user_ID" : @(user_id),
+                                  @"group_ID" : @(group_id),
+                                  @"latitude" : @(module.latitude),
+                                  @"longitude" : @(module.longitude),
+                                  @"uncertaintyRadius" : @(module.uncertaintyRadius),
+                                  @"speed" : @(module.speed),
+                                  @"direction": @(module.direction),
+                                  @"location" : @(1)
+                                  }mutableCopy];
     
+    // creates JSON data object
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
     
+    // sets method type and body
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:jsonData];
     
+    // sends the data
+    if (!error)
+    {
+        NSURLSessionUploadTask *uploadTask = [session uploadTaskWithRequest:request
+                                                                  fromData:jsonData completionHandler:^(NSData *responseData,NSURLResponse *response,NSError *error) {
+                                                                      // Handle response here
+                                                                  }];
+        [uploadTask resume];
+        
+    }
+
     
 }
 
 
-// sets post string
-//NSString *post = [NSString stringWithFormat:@"&Latitude=%@&Longitude=%@",@"latitude",@"longitude"];
-
-
-// URL request
-// function that has all those data parameters
-// builds a JSON through a library Json object - NSJONserializer!!! everything is going to be in doubles/ strings, id, group, etc
-
-/* J.setid = blahs */
-// body or payload
-/*NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:[NSURL URLWithString:@"tobefilledinlater"]];
-
-
-// sets the HTTP method as post
-[request setHTTPMethod:@"POST"];
-[request setValue:@"possibleJSONobject?" forHTTPHeaderField:@"Content-type"]; */
 
 
 

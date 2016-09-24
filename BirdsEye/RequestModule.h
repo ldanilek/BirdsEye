@@ -10,4 +10,7 @@
 
 @interface RequestModule : NSObject
 
+// connects to the server?, sends a JSON of info about the user
+- (void) connectBackEnd: (NSInteger) user_id andgroup_id: (NSInteger) group_id;
+
 @end
