@@ -10,21 +10,23 @@
 
 @implementation RequestModule
 
-- (NSData *) createJSONObject: (NSInteger) user_id andgroup_id: (NSInteger) group_id andlat: (NSSwappedDouble) latitude andlong: (NSSwappedDouble) longitude andprecision: (NSSwappedDouble) precision andspeed: (NSSwappedDouble) speed anddirection: (NSSwappedDouble) direction andloc: (NSNumber*) location
+// creates a JSON object to be passed to the back-end
+//optional parameters: speed and direction but if have one, need to include the others
+- (NSData *) createJSONObject: (NSInteger) user_id andgroup_id: (NSInteger) group_id andlat: (double) latitude andlong: (double) longitude andprecision: (double) precision andspeed: (double) speed anddirection: (double) direction andloc: (NSNumber*) location
 {
-
-    NSDictionary *dict= @{
+    //TODO: use the shared moduel to call Lee's method instead of passing it all in the method parameters
+    NSMutableDictionary *dict= [@{
                                  @"user_ID" : @(user_id),
                                  @"group_ID" : @(group_id),
                                  @"latitude" : @(latitude),
-                                 @"longitude" : @longitude,
-                                 @"precision" : @longitude,
-                                 @"speed" : speed,
-                                 @"direction": direction,
+                                 @"longitude" : @(longitude),
+                                 @"precision" : @(precision),
+                                 @"speed" : @(speed),
+                                 @"direction": @(direction),
                                  @"location" : location
-                                 };
+                                 }mutableCopy];
     
-    NSUInteger u = [[dict objectForKey:@"user_ID"] intValue];
+    
     
     
 }
