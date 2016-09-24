@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		495517F41D97100800A01FC3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495517F31D97100800A01FC3 /* MapKit.framework */; };
 		495517F61D97133D00A01FC3 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 495517F51D97133D00A01FC3 /* MapViewController.m */; };
+		495518001D97224500A01FC3 /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495517FF1D97224500A01FC3 /* Mapbox.framework */; };
+		495518011D97224500A01FC3 /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 495517FF1D97224500A01FC3 /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9B388BEF1D9709A700D0C71E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B388BEE1D9709A700D0C71E /* main.m */; };
 		9B388BF21D9709A700D0C71E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B388BF11D9709A700D0C71E /* AppDelegate.m */; };
 		9B388BF51D9709A700D0C71E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B388BF41D9709A700D0C71E /* ViewController.m */; };
@@ -18,12 +20,28 @@
 		9B388C061D970CAF00D0C71E /* RequestModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B388C051D970CAF00D0C71E /* RequestModule.m */; };
 		9B388C091D970CEC00D0C71E /* LocationModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B388C081D970CEC00D0C71E /* LocationModule.m */; };
 		9BE161C61D971A42001691CA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE161C51D971A42001691CA /* CoreLocation.framework */; };
+		9BE161CC1D97236D001691CA /* GroupsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE161CB1D97236D001691CA /* GroupsTableViewController.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		495518021D97224500A01FC3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				495518011D97224500A01FC3 /* Mapbox.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		495517F31D97100800A01FC3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		495517F51D97133D00A01FC3 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		495517F71D97136C00A01FC3 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		495517FF1D97224500A01FC3 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
 		9B388BEA1D9709A700D0C71E /* BirdsEye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BirdsEye.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B388BEE1D9709A700D0C71E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9B388BF01D9709A700D0C71E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -39,6 +57,8 @@
 		9B388C071D970CEC00D0C71E /* LocationModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationModule.h; sourceTree = "<group>"; };
 		9B388C081D970CEC00D0C71E /* LocationModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationModule.m; sourceTree = "<group>"; };
 		9BE161C51D971A42001691CA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9BE161CA1D97236D001691CA /* GroupsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupsTableViewController.h; sourceTree = "<group>"; };
+		9BE161CB1D97236D001691CA /* GroupsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +68,7 @@
 			files = (
 				9BE161C61D971A42001691CA /* CoreLocation.framework in Frameworks */,
 				495517F41D97100800A01FC3 /* MapKit.framework in Frameworks */,
+				495518001D97224500A01FC3 /* Mapbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +78,7 @@
 		495517F21D97100800A01FC3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				495517FF1D97224500A01FC3 /* Mapbox.framework */,
 				9BE161C51D971A42001691CA /* CoreLocation.framework */,
 				495517F31D97100800A01FC3 /* MapKit.framework */,
 			);
@@ -89,6 +111,8 @@
 				9B388BF41D9709A700D0C71E /* ViewController.m */,
 				495517F71D97136C00A01FC3 /* MapViewController.h */,
 				495517F51D97133D00A01FC3 /* MapViewController.m */,
+				9BE161CA1D97236D001691CA /* GroupsTableViewController.h */,
+				9BE161CB1D97236D001691CA /* GroupsTableViewController.m */,
 				9B388C041D970CAF00D0C71E /* RequestModule.h */,
 				9B388C051D970CAF00D0C71E /* RequestModule.m */,
 				9B388C071D970CEC00D0C71E /* LocationModule.h */,
@@ -120,6 +144,8 @@
 				9B388BE61D9709A700D0C71E /* Sources */,
 				9B388BE71D9709A700D0C71E /* Frameworks */,
 				9B388BE81D9709A700D0C71E /* Resources */,
+				495518021D97224500A01FC3 /* Embed Frameworks */,
+				495518031D97226700A01FC3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -175,6 +201,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		495518031D97226700A01FC3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework/strip-frameworks.sh\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9B388BE61D9709A700D0C71E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -185,6 +227,7 @@
 				9B388C061D970CAF00D0C71E /* RequestModule.m in Sources */,
 				495517F61D97133D00A01FC3 /* MapViewController.m in Sources */,
 				9B388BF21D9709A700D0C71E /* AppDelegate.m in Sources */,
+				9BE161CC1D97236D001691CA /* GroupsTableViewController.m in Sources */,
 				9B388BEF1D9709A700D0C71E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,6 +340,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = BirdsEye/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "shanelles-marauders.BirdsEye";
@@ -308,6 +355,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = BirdsEye/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "shanelles-marauders.BirdsEye";
