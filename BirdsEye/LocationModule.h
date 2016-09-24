@@ -10,6 +10,14 @@
 
 @interface LocationModule : NSObject
 
+// asks the user if location information can be used, if not already authorized
+- (void)requestLocationAccess;
+
+// since using the GPS is battery-intensive, only use it when necessary
+- (void)startUpdatingLocation;
+- (void)stopUpdatingLocation;
+
+// these are the main methods to get data
 - (double)currentLatitude;
 - (double)currentLongitude;
 
