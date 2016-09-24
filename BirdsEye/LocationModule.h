@@ -10,7 +10,8 @@
 
 @interface LocationModule : NSObject
 
-// designated initializer is |init|.
+// designated initializer
++ (LocationModule *)sharedModule;
 
 // asks the user if location information can be used, if not already authorized
 - (void)requestLocationAccess;

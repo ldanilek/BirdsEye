@@ -18,6 +18,14 @@
 
 @implementation LocationModule
 
++ (LocationModule *)sharedModule {
+    static LocationModule *module = nil;
+    if (!module) {
+        module = [[self alloc] init];
+    }
+    return module;
+}
+
 - (CLLocationManager *)manager {
     if (!_manager) {
         _manager = [[CLLocationManager alloc] init];
