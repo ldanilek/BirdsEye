@@ -17,6 +17,7 @@
 
 
 @property (strong, nonatomic) NSMutableDictionary *userDict;
+@property MGLPointAnnotation *point;
 
 @end
 
@@ -27,15 +28,15 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     //set up voodoo donut store
-    MGLPointAnnotation *point = [[MGLPointAnnotation alloc] init];
-    point.coordinate = CLLocationCoordinate2DMake(45.52258, -122.6732); //change this to read from location module eventually
-    point.title = @"Voodoo Doughnut";
-    point.subtitle = @"22 SW 3rd Avenue Portland Oregon, U.S.A.";
+    self.point = [[MGLPointAnnotation alloc] init];
+    self.point.coordinate = CLLocationCoordinate2DMake(45.52258, -122.6732); //change this to read from location module eventually
+    self.point.title = @"Voodoo Doughnut";
+    self.point.subtitle = @"22 SW 3rd Avenue Portland Oregon, U.S.A.";
     
     
     
     //setup the timer
-    [self.mapView addAnnotation:point];
+    [self.mapView addAnnotation:self.point];
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.5
                                                       target:self selector:@selector(updateCoordinates:)
                                                     userInfo:nil repeats:YES];
@@ -43,7 +44,7 @@
     
     
     //setup userDict
-    self.userDict = [NSMutableDictionary init];
+    self.userDict = [[NSMutableDictionary alloc] init];
     
 }
 
@@ -61,6 +62,7 @@
 
 -(void)updateCoordinates:(NSTimer*)timer {
     //NSLog(@"asdf");
+    self.point.coordinate = CLLocationCoordinate2DMake(45.54, -122.65);
 }
 
 @end
