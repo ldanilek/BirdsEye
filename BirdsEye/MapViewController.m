@@ -18,6 +18,8 @@
 
 @property (strong, nonatomic) NSMutableDictionary *userDict;
 @property MGLPointAnnotation *point;
+@property float x;
+@property float y;
 
 @end
 
@@ -33,7 +35,9 @@
     self.point.title = @"Voodoo Doughnut";
     self.point.subtitle = @"22 SW 3rd Avenue Portland Oregon, U.S.A.";
     
-    
+    //temp: setup x, y
+    self.x = 45.52258f;
+    self.y = -122.6732f;
     
     //setup the timer
     [self.mapView addAnnotation:self.point];
@@ -62,7 +66,9 @@
 
 -(void)updateCoordinates:(NSTimer*)timer {
     //NSLog(@"asdf");
-    self.point.coordinate = CLLocationCoordinate2DMake(45.54, -122.65);
+    self.x = self.x+.01f;
+    self.y = self.y+.01f;
+    self.point.coordinate = CLLocationCoordinate2DMake(self.x, self.y);
 }
 
 @end
