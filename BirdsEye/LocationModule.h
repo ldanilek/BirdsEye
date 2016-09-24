@@ -10,20 +10,26 @@
 
 @interface LocationModule : NSObject
 
+// designated initializer
++ (LocationModule *)sharedModule;
+
 // asks the user if location information can be used, if not already authorized
 - (void)requestLocationAccess;
 
 // since using the GPS is battery-intensive, only use it when necessary
+// initially the module is not updating location
 - (void)startUpdatingLocation;
 - (void)stopUpdatingLocation;
 
 // these are the main methods to get data
-- (double)currentLatitude;
-- (double)currentLongitude;
+- (double)latitude;
+- (double)longitude;
+// in meters
+- (double)uncertaintyRadius;
 
 // in meters per second
-- (double)currentSpeed;
+- (double)speed;
 // in degrees relative to true-north
-- (double)currentDirection;
+- (double)direction;
 
 @end
