@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MapViewController.h
 //  BirdsEye
 //
 //  Created by Lee on 9/24/16.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface ViewController : UIViewController
+@interface MapViewController : UIViewController
 
 
 @end
