@@ -14,6 +14,7 @@
 		9B388BFA1D9709A700D0C71E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B388BF91D9709A700D0C71E /* Assets.xcassets */; };
 		9B388BFD1D9709A700D0C71E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B388BFB1D9709A700D0C71E /* LaunchScreen.storyboard */; };
 		9B388C061D970CAF00D0C71E /* RequestModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B388C051D970CAF00D0C71E /* RequestModule.m */; };
+		9B388C091D970CEC00D0C71E /* LocationModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B388C081D970CEC00D0C71E /* LocationModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		9B388BFE1D9709A700D0C71E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B388C041D970CAF00D0C71E /* RequestModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestModule.h; sourceTree = "<group>"; };
 		9B388C051D970CAF00D0C71E /* RequestModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestModule.m; sourceTree = "<group>"; };
+		9B388C071D970CEC00D0C71E /* LocationModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationModule.h; sourceTree = "<group>"; };
+		9B388C081D970CEC00D0C71E /* LocationModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationModule.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 				9B388BF41D9709A700D0C71E /* ViewController.m */,
 				9B388C041D970CAF00D0C71E /* RequestModule.h */,
 				9B388C051D970CAF00D0C71E /* RequestModule.m */,
+				9B388C071D970CEC00D0C71E /* LocationModule.h */,
+				9B388C081D970CEC00D0C71E /* LocationModule.m */,
 				9B388BF61D9709A700D0C71E /* Main.storyboard */,
 				9B388BF91D9709A700D0C71E /* Assets.xcassets */,
 				9B388BFB1D9709A700D0C71E /* LaunchScreen.storyboard */,
@@ -154,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B388C091D970CEC00D0C71E /* LocationModule.m in Sources */,
 				9B388BF51D9709A700D0C71E /* ViewController.m in Sources */,
 				9B388C061D970CAF00D0C71E /* RequestModule.m in Sources */,
 				9B388BF21D9709A700D0C71E /* AppDelegate.m in Sources */,
