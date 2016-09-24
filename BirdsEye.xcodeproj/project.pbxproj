@@ -17,6 +17,7 @@
 		9B388BFD1D9709A700D0C71E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B388BFB1D9709A700D0C71E /* LaunchScreen.storyboard */; };
 		9B388C061D970CAF00D0C71E /* RequestModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B388C051D970CAF00D0C71E /* RequestModule.m */; };
 		9B388C091D970CEC00D0C71E /* LocationModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B388C081D970CEC00D0C71E /* LocationModule.m */; };
+		9BE161C61D971A42001691CA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE161C51D971A42001691CA /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		9B388C051D970CAF00D0C71E /* RequestModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestModule.m; sourceTree = "<group>"; };
 		9B388C071D970CEC00D0C71E /* LocationModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationModule.h; sourceTree = "<group>"; };
 		9B388C081D970CEC00D0C71E /* LocationModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationModule.m; sourceTree = "<group>"; };
+		9BE161C51D971A42001691CA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BE161C61D971A42001691CA /* CoreLocation.framework in Frameworks */,
 				495517F41D97100800A01FC3 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,6 +57,7 @@
 		495517F21D97100800A01FC3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9BE161C51D971A42001691CA /* CoreLocation.framework */,
 				495517F31D97100800A01FC3 /* MapKit.framework */,
 			);
 			name = Frameworks;
