@@ -21,6 +21,7 @@
 }
 
 
+// send and receive JSON function, pass in a dictionary and a url -
 
 - (void) connectBackEnd: (NSInteger) userID andGroupID: (NSInteger) groupID
 {
