@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "RequestModule.h"
 
 @interface ViewController ()
 
@@ -16,6 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    RequestModule* sample = [RequestModule sharedModule];
+    [sample connectBackEnd: 1 andGroupID: 2];
     // Do any additional setup after loading the view, typically from a nib.
 }
 

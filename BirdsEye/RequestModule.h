@@ -10,7 +10,10 @@
 
 @interface RequestModule : NSObject
 
+// designated initializer
++ (RequestModule *)sharedModule;
+
 // connects to the server?, sends a JSON of info about the user
-- (void) connectBackEnd: (NSInteger) user_id andgroup_id: (NSInteger) group_id;
+- (void) connectBackEnd: (NSInteger) userID andGroupID: (NSInteger) group_id;
 
 @end
