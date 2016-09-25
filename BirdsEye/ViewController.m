@@ -42,4 +42,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)createGroup:(id)sender {
+    UIAlertController *groupNameRequest = [[UIAlertController alertControllerWithTitle:<#(nullable NSString *)#> message:<#(nullable NSString *)#> preferredStyle:<#(UIAlertControllerStyle)#>]
+    [self performSegueWithIdentifier:@"create" sender:sender];
+}
+
 @end
