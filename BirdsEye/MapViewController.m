@@ -11,6 +11,7 @@
 #import "CustomAnnotationView.h"
 #import "RequestModule.h"
 #import "LocationModule.h"
+#import "Storage.h"
 
 #define WAIT_BETWEEN_PINGS (10)
 
@@ -159,7 +160,7 @@
 -(void)updateCoordinates:(NSTimer*)timer {
     [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake([self.location latitude], [self.location longitude])];
     //call shanelle's update function here, the rest of this probably goes in a callback
-    [self.request pingInfo:self.userId andGroupID:self.groupId andReturningData:^(NSDictionary *newDict) {
+    [self.request pingInfo:[[Storage sharedModule] userId] andGroupID:[[Storage sharedModule] groupId] andReturningData:^(NSDictionary *newDict) {
         if (newDict) {
             [self updateUserDict:newDict];
         }
@@ -225,20 +226,23 @@
     }
     
     //remove users that are no longer sending location data
-    for(id key in _userDict) {
-        MGLPointAnnotation *point = [_userDict objectForKey:key];
-        BOOL found = false;
-        for (NSDictionary *newData in array) {
-            if (newData[@"id"] == key) {
-                found = true;
-            }
-        }
-        if (!found) {
-            NSLog(@"removing user %@", key);
-            [self.mapView removeAnnotation:point];
-            [_userDict removeObjectForKey:key];
-        }
-    }
+    // this functinonality is not implemented on the backend
+    
+    
+//    for(id key in _userDict) {
+//        MGLPointAnnotation *point = [_userDict objectForKey:key];
+//        BOOL found = false;
+//        for (NSDictionary *newData in array) {
+//            if (newData[@"id"] == key) {
+//                found = true;
+//            }
+//        }
+//        if (!found) {
+//            NSLog(@"removing user %@", key);
+//            [self.mapView removeAnnotation:point];
+//            [_userDict removeObjectForKey:key];
+//        }
+//    }
 }
 
 @end
