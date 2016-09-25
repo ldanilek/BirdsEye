@@ -49,8 +49,14 @@
     }]];
      [groupNameRequest addAction:[UIAlertAction actionWithTitle:@"Play" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
          NSLog(@"Create group with name %@ number of teams %@", groupNameField.text, teamNumberField.text);
-         [[RequestModule sharedModule] createGroupInfo:groupNameField.text andTeams:[teamNumberField.text intValue] andReturningData:^(NSDictionary *dict) {
+
+         int numTeams = [teamNumberField.text intValue];
+         if (numTeams == 0) {
+             numTeams = 1;
+         }
+         [[RequestModule sharedModule] createGroupInfo:groupNameField.text andTeams:numTeams andReturningData:^(NSDictionary *dict) {
              [[Storage sharedModule] setGroupId:[dict[@"group_id"] intValue]];
+     
              [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                  [self performSegueWithIdentifier:@"map" sender:sender];
              }];
