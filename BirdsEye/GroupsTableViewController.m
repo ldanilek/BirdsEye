@@ -7,6 +7,7 @@
 //
 
 #import "GroupsTableViewController.h"
+#import "RequestModule.h"
 
 @interface GroupsTableViewController ()
 
@@ -22,6 +23,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[RequestModule sharedModule] get
     
     NSArray *nearbyGroups = @[@"Shanelle's Marauders", @"Nearby Randos"];
     self.groupNames = nearbyGroups;
