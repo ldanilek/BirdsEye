@@ -64,7 +64,9 @@
          NSLog(@"Create group with name %@ number of teams %@", groupNameField.text, teamNumberField.text);
          [[RequestModule sharedModule] createGroupInfo:groupNameField.text andTeams:[teamNumberField.text intValue] andReturningData:^(NSDictionary *dict) {
              [[MapViewController sharedModule] setGroupId:[dict[@"group_id"] intValue]];
-             [self performSegueWithIdentifier:@"map" sender:sender];
+             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                 [self performSegueWithIdentifier:@"map" sender:sender];
+             }];
          }];
     }]];
     [self presentViewController:groupNameRequest animated:YES completion:nil];
