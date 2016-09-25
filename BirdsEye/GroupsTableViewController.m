@@ -7,10 +7,11 @@
 //
 
 #import "GroupsTableViewController.h"
+#import "RequestModule.h"
 
 @interface GroupsTableViewController ()
 
-@property (nonatomic) NSArray *groupNames;
+@property (nonatomic) NSArray *groupInfo;
 
 @end
 
@@ -23,8 +24,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSArray *nearbyGroups = @[@"Shanelle's Marauders", @"Nearby Randos"];
-    self.groupNames = nearbyGroups;
+    [self.tableView setBackgroundColor:[UIColor blackColor]];
+    [self.navigationController.navigationBar setBackgroundColor:[UIColor grayColor]];
+    
+    [[RequestModule sharedModule] getGroupInfoReturningData:^(NSDictionary *dict){
+        NSArray *nearbyGroups = dict[@"groups"];
+        
+        self.groupInfo = nearbyGroups;
+    }];
     
 
     
@@ -49,21 +56,40 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.groupNames.count;
+    if (self.groupInfo.count) {
+        return self.groupInfo.count;
+    } else {
+        return 1;
+    }
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"group-cell" forIndexPath:indexPath];
-    
-    cell.textLabel.text = self.groupNames[indexPath.row];
-    // Configure the cell...
+    [cell setBackgroundColor: [UIColor blackColor]];
+    [cell.textLabel setTextColor:[UIColor blueColor]];
+     
+    if (!indexPath.row && !self.groupInfo.count) {
+        cell.textLabel.text = @"No groups available to join, try creating a group!";
+    } else {
+        cell.textLabel.text = self.groupInfo[indexPath.row][@"name"];
+
+    }
+       // Configure the cell...
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
+}
+
+-(NSIndexPath *) tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (!indexPath.row && !self.groupInfo.count) {
+        return nil;
+    } else {
+        return indexPath;
+    }
 }
 
 /*
