@@ -9,6 +9,7 @@
 #import "MapViewController.h"
 #import <MapBox/Mapbox.h>
 #import "CustomAnnotationView.h"
+#import "RequestModule.h"
 
 @interface MapViewController ()
 
@@ -26,6 +27,7 @@
 @property int teamId;
 @property int userId;
 
+@property (strong, nonatomic) RequestModule *request;
 @end
 
 @implementation MapViewController
@@ -44,6 +46,7 @@
     self.userDict = [[NSMutableDictionary alloc] init];
     self.teamMap = [[NSMutableDictionary alloc] init];
     
+    self.request = [RequestModule sharedModule];
 //    //testing points
 //    // Specify coordinates for our annotations.
 //    CLLocationCoordinate2D coordinates[] = {
@@ -79,11 +82,15 @@
 
 -(void)updateCoordinates:(NSTimer*)timer {
     //call shanelle's update function here, the rest of this probably goes in a callback
-    
+    [self.request pingInfo:self.userId andGroupID:self.groupId andReturningData:^(NSDictionary *newDict) {
+        if (newDict) {
+            [self updateUserDict:newDict];
+        }
+    }];
     //temp
-    NSDictionary *newDict = [[NSDictionary alloc] init];
-    
-    [self updateUserDict:newDict];
+//    NSDictionary *newDict = [[NSDictionary alloc] init];
+//    
+//    [self updateUserDict:newDict];
     
     //sometimes were probably going to want to make annotations visible or invisible, we can do that here
     
