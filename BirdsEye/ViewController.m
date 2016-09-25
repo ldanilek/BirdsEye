@@ -62,6 +62,10 @@
     [groupNameRequest addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         groupNameField = textField;
     }];
+    __block UITextField *teamNumberField;
+    [groupNameRequest addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        teamNumberField = textField;
+    }];
     [groupNameRequest addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
     }]];
