@@ -23,7 +23,6 @@
     // Use CALayer’s corner radius to turn this view into a circle.
     self.layer.cornerRadius = self.frame.size.width / 2;
     self.layer.borderWidth = 2;
-    self.layer.borderColor = [UIColor redColor].CGColor;
     
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     animation.duration = 2;
