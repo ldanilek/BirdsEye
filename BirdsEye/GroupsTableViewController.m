@@ -32,7 +32,8 @@
     [super viewDidLoad];
     
     [self.tableView setBackgroundColor:[UIColor blackColor]];
-    [self.navigationController.navigationBar setBackgroundColor:[UIColor grayColor]];
+    [self.navigationController.navigationBar setBackgroundColor:[UIColor blackColor]];
+   // [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     
     [[RequestModule sharedModule] getGroupInfoReturningData:^(NSDictionary *dict){
        NSArray *nearbyGroups = dict[@"groups"];
@@ -79,7 +80,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"group-cell" forIndexPath:indexPath];
     [cell setBackgroundColor: [UIColor blackColor]];
-    [cell.textLabel setTextColor:[UIColor lightTextColor]];
+    [cell.textLabel setTextColor:[UIColor whiteColor]];
      
     if (!indexPath.row && !self.groupInfo.count) {
         cell.textLabel.text = @"No groups available to join, try creating a group!";

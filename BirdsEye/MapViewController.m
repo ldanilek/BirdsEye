@@ -18,6 +18,7 @@
 @interface MapViewController ()
 
 @property (strong, nonatomic) IBOutlet MGLMapView *mapView;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
 
 @property (weak) NSTimer *repeatingTimer;
 
@@ -54,6 +55,12 @@
 
 - (void)updateSpeedLabel {
     self.speedLabel.text = [NSString stringWithFormat:@"%g, %g", [[LocationModule sharedModule] speed], [[LocationModule sharedModule] uncertaintyRadius]];
+}
+- (IBAction)Back:(UIButton*)sender {
+    
+    NSLog(@"back bbuton pressed");
+    [self.presentingViewController dismissViewControllerAnimated:YES completion: nil];
+    
 }
 
 #define RADAR_HEIGHT (350)
@@ -113,10 +120,11 @@
     speedLabel.textColor = [UIColor whiteColor];
     //[self.view addSubview:speedLabel];
     self.speedLabel = speedLabel;
+    speedLabel.userInteractionEnabled = NO;
     
     UIView *view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     //view.backgroundColor = [UIColor whiteColor];
-    
+    view.userInteractionEnabled = NO;
     [view.layer addSublayer:[self spinnyRadar]];
     [self.view addSubview:view];
     // Do any additional setup after loading the view, typically from a nib.
