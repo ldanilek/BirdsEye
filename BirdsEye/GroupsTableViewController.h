@@ -10,4 +10,5 @@
 
 @interface GroupsTableViewController : UITableViewController
 
+-(NSArray *) getGroupInfo;
 @end
