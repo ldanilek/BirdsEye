@@ -11,7 +11,10 @@
 @interface TeamsTableViewController ()
 
 // number of teams - will need to parse the JSON obj sent by server
-@property (nonatomic) NSArray *teamNames;
+@property (nonatomic, strong) NSDictionary *teamNames;
+@property (nonatomic) NSArray *teamlist;
+
+
 
 @end
 
@@ -21,8 +24,9 @@
     [super viewDidLoad];
     
     //TODO: local array of the team names - dummy names for now
-    NSArray *teams = @[@"team1", @"team2"];
-    self.teamNames = teams;
+    //NSArray *teams = @[@"team1", @"team2"];
+    self.teamlist = [_teamNames objectForKey:<#(nonnull id)#>]
+    self.teamNames = _teamNames;
     
 
     

@@ -131,7 +131,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="jMY-xF-M2s" kind="show" id="cnf-2i-G6e"/>
+                                    <segue destination="jMY-xF-M2s" kind="show" identifier="to-team-list" id="cnf-2i-G6e"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

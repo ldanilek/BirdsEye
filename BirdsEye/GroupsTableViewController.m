@@ -8,6 +8,7 @@
 
 #import "GroupsTableViewController.h"
 #import "RequestModule.h"
+#import "TeamsTableViewController.h"
 
 @interface GroupsTableViewController ()
 
@@ -34,7 +35,12 @@
     [[RequestModule sharedModule] getGroupInfoReturningData:^(NSDictionary *dict){
         NSArray *nearbyGroups = dict[@"groups"];
         
-        self.groupInfo = nearbyGroups;
+        NSArray *fakeGroups = [NSArray arrayWithObjects:
+        @{@"name": @"Team-Alex", @"group_id": @12, @"num_teams": @6},
+        @{@"name": @"Team-Lee", @"group_id": @6, @"num_teams": @2}, nil
+             ];
+        
+        self.groupInfo = fakeGroups;
     }];
     
 
@@ -130,14 +136,25 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"to-team-list"])
+    {
+
+        // Get reference to the destination view controller
+        TeamsTableViewController *vc = [segue destinationViewController];
+        
+        // Pass the teamNames info for the group that was clicked
+        [vc teamName: [_groupInfo [indexPath.row]];
+    }
 }
-*/
+
 
 @end
