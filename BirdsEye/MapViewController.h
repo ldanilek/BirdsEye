@@ -10,6 +10,12 @@
 
 @interface MapViewController : UIViewController
 
++(MapViewController*)sharedModule;
+
+//important info storage, maybe shouldnt go here?
+@property int groupId;
+@property int teamId;
+@property int userId;
 
 @end
 

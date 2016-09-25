@@ -22,12 +22,6 @@
 @property (strong, nonatomic) NSMutableDictionary *userDict;
 @property (strong, nonatomic) NSMutableDictionary *teamMap;
 
-
-//important info storage, maybe shouldnt go here?
-@property int groupId;
-@property int teamId;
-@property int userId;
-
 @property (strong, nonatomic) RequestModule *request;
 @property (strong, nonatomic) LocationModule *location;
 
@@ -35,6 +29,17 @@
 @end
 
 @implementation MapViewController
+
+// shared module for use in other classes
++ (MapViewController *)sharedModule {
+    static MapViewController *module = nil;
+    if (!module) {
+        module = [[self alloc] init];
+    }
+    return module;
+}
+
+
 
 - (void)updateSpeedLabel {
     self.speedLabel.text = [NSString stringWithFormat:@"%g, %g", [[LocationModule sharedModule] speed], [[LocationModule sharedModule] uncertaintyRadius]];
