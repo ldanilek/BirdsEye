@@ -56,6 +56,7 @@
     
     
     [self.mapView setScrollEnabled:false];
+    [self.mapView setZoomEnabled:false];
     
 //    //testing points
 //    // Specify coordinates for our annotations.
