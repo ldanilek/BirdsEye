@@ -17,8 +17,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // TODO: remove later
     RequestModule* sample = [RequestModule sharedModule];
-    [sample connectBackEnd: 1 andGroupID: 2];
+    // testing
+    [sample pingInfo:2 andGroupID:3];
+    [sample joinGroupInfo:4 andTeam:6];
+    [sample createGroupInfo:@"Shaneyney's Marauders" andTeams:10];
+
+
     // Do any additional setup after loading the view, typically from a nib.
 }
 
