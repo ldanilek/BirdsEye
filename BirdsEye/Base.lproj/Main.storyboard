@@ -125,7 +125,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WbD-Pe-47Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1700" y="540"/>
+            <point key="canvasLocation" x="1279" y="556"/>
         </scene>
         <!--Select Group-->
         <scene sceneID="GKa-Wq-c1u">

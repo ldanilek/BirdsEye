@@ -21,6 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self.tableView setBackgroundColor:[UIColor blackColor]];
+    [self.navigationController.navigationBar setBackgroundColor:[UIColor blackColor]];
     
     //TODO: local array of the team names - dummy names for now
     //NSString *groupName = [_teamNames objectForKey:@"name"];
@@ -68,6 +70,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"team-cell" forIndexPath:indexPath];
     cell.textLabel.text = self.numElem[indexPath.row];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.backgroundColor = [UIColor blackColor];
 
     // Configure the cell...
     

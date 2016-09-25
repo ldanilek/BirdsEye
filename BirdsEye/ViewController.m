@@ -25,6 +25,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [_joinButton setTintColor:[UIColor whiteColor]];
+    [_createButton setTintColor:[UIColor whiteColor]];
 
 }
 
