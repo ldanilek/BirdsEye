@@ -11,6 +11,7 @@
 		495517F61D97133D00A01FC3 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 495517F51D97133D00A01FC3 /* MapViewController.m */; };
 		495518001D97224500A01FC3 /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 495517FF1D97224500A01FC3 /* Mapbox.framework */; };
 		495518011D97224500A01FC3 /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 495517FF1D97224500A01FC3 /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		495518081D974E6600A01FC3 /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 495518071D974E6600A01FC3 /* CustomAnnotationView.m */; };
 		9B388BEF1D9709A700D0C71E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B388BEE1D9709A700D0C71E /* main.m */; };
 		9B388BF21D9709A700D0C71E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B388BF11D9709A700D0C71E /* AppDelegate.m */; };
 		9B388BF51D9709A700D0C71E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B388BF41D9709A700D0C71E /* ViewController.m */; };
@@ -42,6 +43,8 @@
 		495517F51D97133D00A01FC3 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		495517F71D97136C00A01FC3 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		495517FF1D97224500A01FC3 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
+		495518071D974E6600A01FC3 /* CustomAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomAnnotationView.m; path = ../CustomAnnotationView.m; sourceTree = "<group>"; };
+		495518091D974E7F00A01FC3 /* CustomAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CustomAnnotationView.h; path = ../CustomAnnotationView.h; sourceTree = "<group>"; };
 		9B388BEA1D9709A700D0C71E /* BirdsEye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BirdsEye.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B388BEE1D9709A700D0C71E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9B388BF01D9709A700D0C71E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -109,6 +112,8 @@
 				9B388BF11D9709A700D0C71E /* AppDelegate.m */,
 				9B388BF31D9709A700D0C71E /* ViewController.h */,
 				9B388BF41D9709A700D0C71E /* ViewController.m */,
+				495518091D974E7F00A01FC3 /* CustomAnnotationView.h */,
+				495518071D974E6600A01FC3 /* CustomAnnotationView.m */,
 				495517F71D97136C00A01FC3 /* MapViewController.h */,
 				495517F51D97133D00A01FC3 /* MapViewController.m */,
 				9BE161CA1D97236D001691CA /* GroupsTableViewController.h */,
@@ -224,6 +229,7 @@
 			files = (
 				9B388C091D970CEC00D0C71E /* LocationModule.m in Sources */,
 				9B388BF51D9709A700D0C71E /* ViewController.m in Sources */,
+				495518081D974E6600A01FC3 /* CustomAnnotationView.m in Sources */,
 				9B388C061D970CAF00D0C71E /* RequestModule.m in Sources */,
 				495517F61D97133D00A01FC3 /* MapViewController.m in Sources */,
 				9B388BF21D9709A700D0C71E /* AppDelegate.m in Sources */,
