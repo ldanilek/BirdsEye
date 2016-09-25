@@ -20,7 +20,9 @@
     return module;
 }
 
-// returns NSDictionary object with info needed for a ping to the server
+
+
+// sends pingInfo to server and receives corresponding JSON obj
 - (void) pingInfo: (NSInteger) userID andGroupID: (NSInteger) groupID andReturningData:(void(^)(NSDictionary*))callback
 {
     // initializes location module object
@@ -45,13 +47,13 @@
     // instantiate requestModule obj
     RequestModule* temp = [RequestModule sharedModule];
 
-    // sends join Group info to server and saves responding JSON
+    // sends join Group info to server and does something with returned dictionary obj (undecided)
     [temp sendServerInfo:dict andURL:url andReturningData:callback];
 
 
 }
 
-// returns NSDictionary object with info needed to create Group
+// sends createGroupInfo to server and receives corresponding JSON obj
 -(void) createGroupInfo: (NSString*) groupName andTeams: (NSInteger) teams andReturningData:(void(^)(NSDictionary*))callback{
     
     // creates dictionary obj and returns it
@@ -65,15 +67,11 @@
     // instantiate requestModule obj
     RequestModule* temp = [RequestModule sharedModule];
     
-    // sends join Group info to server and saves responding JSON
-    [temp sendServerInfo:dict andURL:url andReturningData:^(NSDictionary *returningData) {
-        //TODO: save the info somewhere!
-        NSLog(@"successfully saved CREATE GROUP info technically");
-    }];
-    
+    // sends join Group info to server and does something with returned dictionary obj (undecided)
+    [temp sendServerInfo:dict andURL:url andReturningData:callback];
 }
 
-// returns NSDictionary object with info needed to join Group -
+// sends joinGroupInfo to server and receives corresponding JSON obj
 -(void) joinGroupInfo: (NSInteger) groupID andTeam: (NSInteger) team andReturningData:(void(^)(NSDictionary*))callback{
     // creates dictionary obj and returns it
     NSDictionary *dict = @{
@@ -86,15 +84,48 @@
     // instantiate requestModule obj
     RequestModule* temp = [RequestModule sharedModule];
     
-    // sends join Group info to server and saves responding JSON
-    [temp sendServerInfo:dict andURL:url andReturningData:^(NSDictionary *returningData) {
-        //TODO: save the info somewhere!
-        NSLog(@"successfully saved JOIN GROUP info technically");
-    }];
+    // sends join Group info to server and does something with returned dictionary obj (undecided)
+    [temp sendServerInfo:dict andURL:url andReturningData:callback];
     
     
 }
-//connects to server - sends appropriate JSON object and receives corresponding info as a callback function
+
+// returns a mutable dictionary of the different groups and number of teams in each group
+- (NSMutableDictionary*) getGroupInfo
+{
+    // set url - .../groups
+    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8082/groups"];
+    
+    // configures NSURL session
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+    
+    // creates NSURL request
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
+                                    initWithURL: url];
+    
+    // sets method type
+    [request setHTTPMethod:@"GET"];
+    
+    //gets the data
+    NSURLSessionDataTask *jsonData = [session dataTaskWithURL:url completionHandler:^NSDictionary*(NSData * groupsData, NSURLResponse * response, NSError *error){
+        
+        // parses groupData into dictionary
+        // no error checking right now in case groups Data is nil - how to mimic the method below?
+        NSError *rerror = nil;
+        NSDictionary *responseJSON = [NSJSONSerialization JSONObjectWithData:groupsData options:NSJSONReadingMutableContainers error:&rerror];
+        return responseJSON;
+    }];
+
+    
+    
+    
+    
+    
+    
+}
+
+//connects to server - sends appropriate JSON object and receives corresponding info in a callback function
 - (void) sendServerInfo:(NSDictionary*) data andURL: (NSURL*) url andReturningData:(void(^)(NSDictionary*))callback
 {
     // creates JSON data objct
