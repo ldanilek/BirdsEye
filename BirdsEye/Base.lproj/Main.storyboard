@@ -43,7 +43,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+            <point key="canvasLocation" x="2260" y="-447"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="AD4-Ei-nFK">
@@ -72,6 +72,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="no9-NL-Cco" userLabel="JoinButton">
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Join group"/>
+                                <connections>
+                                    <segue destination="KTm-eM-v5R" kind="show" id="aNC-Sq-ve5"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j3T-ip-3fa">
                                 <frame key="frameInset" minX="244" minY="144" width="178" height="30"/>
@@ -98,5 +101,56 @@
             </objects>
             <point key="canvasLocation" x="1016.0419790104949" y="287.19999999999999"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="XR8-Kd-IBG">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WbD-Pe-47Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="KTm-eM-v5R" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SLF-pO-d3t">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BKR-GS-Wp7" kind="relationship" relationship="rootViewController" id="IfM-j1-SSN"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1700" y="540"/>
+        </scene>
+        <!--Select Group-->
+        <scene sceneID="GKa-Wq-c1u">
+            <objects>
+                <tableViewController id="BKR-GS-Wp7" customClass="GroupsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ueb-ZZ-yxy">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="OlA-fu-1FW">
+                                <rect key="frame" x="0.0" y="92" width="667" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OlA-fu-1FW" id="rZS-8j-Osc">
+                                    <frame key="frameInset" width="667" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="BKR-GS-Wp7" id="CIA-YJ-EK9"/>
+                            <outlet property="delegate" destination="BKR-GS-Wp7" id="uqg-m0-mEP"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Select Group" id="4B4-sh-1kP"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="map" id="8tu-VH-TR0"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pfW-VY-uBs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2357" y="540"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="8tu-VH-TR0"/>
+    </inferredMetricsTieBreakers>
 </document>
