@@ -38,6 +38,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     //setup the timer
+    
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.5
                                                       target:self selector:@selector(updateCoordinates:)
                                                     userInfo:nil repeats:YES];
@@ -50,6 +51,9 @@
     
     self.request = [RequestModule sharedModule];
     self.location = [LocationModule sharedModule];
+    //start updating location
+    [self.location startUpdatingLocation];
+    
 //    //testing points
 //    // Specify coordinates for our annotations.
 //    CLLocationCoordinate2D coordinates[] = {

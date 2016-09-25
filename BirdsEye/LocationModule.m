@@ -53,6 +53,7 @@
 }
 
 - (double)longitude {
+    
     return self.currentLocation.coordinate.longitude;
 }
 
