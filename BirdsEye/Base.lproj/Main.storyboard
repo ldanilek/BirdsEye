@@ -59,9 +59,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TBL-Af-PMM" userLabel="CreateButton">
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Create group">
-                                    <color key="titleColor" red="0.012507400093001331" green="0.41988800775360968" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <state key="normal" title="Create group"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" id="PnH-93-h8E"/>
                                 </connections>
@@ -81,6 +79,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="dTm-S1-enX" id="C97-gR-PjI"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -96,6 +97,11 @@
                             <constraint firstAttribute="centerXWithinMargins" secondItem="TBL-Af-PMM" secondAttribute="centerX" id="r9v-oE-duw"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="createButton" destination="TBL-Af-PMM" id="Y5y-js-Drc"/>
+                        <outlet property="joinButton" destination="no9-NL-Cco" id="6wT-5U-GSl"/>
+                        <outlet property="nameField" destination="j3T-ip-3fa" id="g0w-LO-Rhf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bkt-6t-UYA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -151,6 +157,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="8tu-VH-TR0"/>
+        <segue reference="PnH-93-h8E"/>
     </inferredMetricsTieBreakers>
 </document>

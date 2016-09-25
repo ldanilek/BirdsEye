@@ -16,6 +16,10 @@
 
 @implementation GroupsTableViewController
 
+- (void)cancelButtonPressed:(UIBarButtonItem *)sender {
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -23,6 +27,8 @@
     self.groupNames = nearbyGroups;
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"group-cell"];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonPressed:)];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
