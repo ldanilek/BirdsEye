@@ -41,7 +41,9 @@
         @{@"name": @"Team-Lee", @"group_id": @6, @"num_teams": @2}, nil
              ];
         
+        
         self.groupInfo = fakeGroups;
+        [self.tableView reloadData];
     }];
     
 
