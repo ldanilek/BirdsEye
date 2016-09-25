@@ -226,20 +226,23 @@
     }
     
     //remove users that are no longer sending location data
-    for(id key in _userDict) {
-        MGLPointAnnotation *point = [_userDict objectForKey:key];
-        BOOL found = false;
-        for (NSDictionary *newData in array) {
-            if (newData[@"id"] == key) {
-                found = true;
-            }
-        }
-        if (!found) {
-            NSLog(@"removing user %@", key);
-            [self.mapView removeAnnotation:point];
-            [_userDict removeObjectForKey:key];
-        }
-    }
+    // this functinonality is not implemented on the backend
+    
+    
+//    for(id key in _userDict) {
+//        MGLPointAnnotation *point = [_userDict objectForKey:key];
+//        BOOL found = false;
+//        for (NSDictionary *newData in array) {
+//            if (newData[@"id"] == key) {
+//                found = true;
+//            }
+//        }
+//        if (!found) {
+//            NSLog(@"removing user %@", key);
+//            [self.mapView removeAnnotation:point];
+//            [_userDict removeObjectForKey:key];
+//        }
+//    }
 }
 
 @end
