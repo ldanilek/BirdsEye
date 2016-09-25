@@ -162,6 +162,7 @@
     //call shanelle's update function here, the rest of this probably goes in a callback
     [self.request pingInfo:[[Storage sharedModule] userId] andGroupID:[[Storage sharedModule] groupId] andReturningData:^(NSDictionary *newDict) {
         if (newDict) {
+            NSLog(@"updating dict");
             [self updateUserDict:newDict];
         }
     }];
