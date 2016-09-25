@@ -111,7 +111,7 @@
     UILabel *speedLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 700, 100)];
     [[NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateSpeedLabel) userInfo:nil repeats:YES] fire];
     speedLabel.textColor = [UIColor whiteColor];
-    [self.view addSubview:speedLabel];
+    //[self.view addSubview:speedLabel];
     self.speedLabel = speedLabel;
     
     UIView *view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
