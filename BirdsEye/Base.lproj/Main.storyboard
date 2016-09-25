@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dTm-S1-enX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dTm-S1-enX">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -19,7 +19,19 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="MGLMapView">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhl-dD-CK4">
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="Back:" destination="BYZ-38-t0r" eventType="touchUpInside" id="plN-kp-zgJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Lhl-dD-CK4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="9" id="9oc-tj-yeq"/>
+                            <constraint firstItem="Lhl-dD-CK4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="fVY-9P-HqW"/>
+                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="styleURL__" value="mapbox://styles/aringlein/cithnn9sj000p2iqhxddjtrx9"/>
                             <userDefinedRuntimeAttribute type="number" keyPath="latitude">
@@ -38,12 +50,13 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="Lhl-dD-CK4" id="tXK-oH-9xk"/>
                         <outlet property="mapView" destination="8bC-Xf-vdC" id="cbh-8h-14p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3030" y="-328"/>
+            <point key="canvasLocation" x="3312.8000000000002" y="-809.14542728635683"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="AD4-Ei-nFK">
@@ -64,11 +77,6 @@
                                     <action selector="createGroup:" destination="dTm-S1-enX" eventType="touchUpInside" id="ZtV-ub-GHR"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Aeu-57-Dhf">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="116" id="C5l-Dz-qdk"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="no9-NL-Cco" userLabel="JoinButton">
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Join group"/>
@@ -76,16 +84,21 @@
                                     <segue destination="KTm-eM-v5R" kind="show" id="aNC-Sq-ve5"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="FSG-tF-xWy">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="y5Q-WQ-2zZ"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="no9-NL-Cco" firstAttribute="centerX" secondItem="d1h-OC-b8T" secondAttribute="centerX" id="ES9-Td-Xd6"/>
-                            <constraint firstItem="TBL-Af-PMM" firstAttribute="top" secondItem="Aeu-57-Dhf" secondAttribute="bottom" constant="59" id="Hef-bz-JoH"/>
-                            <constraint firstItem="Aeu-57-Dhf" firstAttribute="top" secondItem="hb6-He-HH4" secondAttribute="bottom" id="RcC-3p-gCW"/>
-                            <constraint firstItem="Aeu-57-Dhf" firstAttribute="trailing" secondItem="d1h-OC-b8T" secondAttribute="trailingMargin" id="UEU-Ob-LMn"/>
                             <constraint firstItem="no9-NL-Cco" firstAttribute="top" secondItem="TBL-Af-PMM" secondAttribute="bottom" constant="8" id="Wxp-Dk-QYV"/>
-                            <constraint firstItem="Aeu-57-Dhf" firstAttribute="leading" secondItem="d1h-OC-b8T" secondAttribute="leadingMargin" id="cvp-WS-iNM"/>
+                            <constraint firstItem="FSG-tF-xWy" firstAttribute="top" secondItem="hb6-He-HH4" secondAttribute="bottom" constant="8" symbolic="YES" id="g3S-NC-dYQ"/>
                             <constraint firstAttribute="centerXWithinMargins" secondItem="TBL-Af-PMM" secondAttribute="centerX" id="r9v-oE-duw"/>
+                            <constraint firstItem="FSG-tF-xWy" firstAttribute="leading" secondItem="d1h-OC-b8T" secondAttribute="leadingMargin" constant="50" id="sHo-9V-NqW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FSG-tF-xWy" secondAttribute="trailing" constant="72" id="woq-J4-xGd"/>
+                            <constraint firstItem="TBL-Af-PMM" firstAttribute="top" secondItem="FSG-tF-xWy" secondAttribute="bottom" constant="39" id="yqI-tK-uPz"/>
                         </constraints>
                     </view>
                     <connections>
@@ -96,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bkt-6t-UYA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1279" y="-289"/>
+            <point key="canvasLocation" x="1278.7106446776613" y="-290.39999999999998"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XR8-Kd-IBG">
@@ -144,7 +157,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pfW-VY-uBs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2628" y="450"/>
+            <point key="canvasLocation" x="3194" y="606"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="z6J-tH-igK">
@@ -195,6 +208,9 @@
             <point key="canvasLocation" x="2158" y="48"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="title.jpg" width="1600" height="798"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="usC-wG-Q0N"/>
     </inferredMetricsTieBreakers>

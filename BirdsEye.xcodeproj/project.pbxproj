@@ -18,12 +18,12 @@
 		9B388BF51D9709A700D0C71E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B388BF41D9709A700D0C71E /* ViewController.m */; };
 		9B388BF81D9709A700D0C71E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B388BF61D9709A700D0C71E /* Main.storyboard */; };
 		9B388BFA1D9709A700D0C71E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B388BF91D9709A700D0C71E /* Assets.xcassets */; };
-		9B388BFD1D9709A700D0C71E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B388BFB1D9709A700D0C71E /* LaunchScreen.storyboard */; };
 		9B388C061D970CAF00D0C71E /* RequestModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B388C051D970CAF00D0C71E /* RequestModule.m */; };
 		9B388C091D970CEC00D0C71E /* LocationModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B388C081D970CEC00D0C71E /* LocationModule.m */; };
 		9BE161C61D971A42001691CA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE161C51D971A42001691CA /* CoreLocation.framework */; };
 		9BE161CC1D97236D001691CA /* GroupsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE161CB1D97236D001691CA /* GroupsTableViewController.m */; };
 		C0E620FF1D9780D4009019F7 /* TeamsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E620FE1D9780D4009019F7 /* TeamsTableViewController.m */; };
+		C0E621031D98292A009019F7 /* title.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C0E621021D98292A009019F7 /* title.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,7 +57,6 @@
 		9B388BF41D9709A700D0C71E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9B388BF71D9709A700D0C71E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9B388BF91D9709A700D0C71E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9B388BFC1D9709A700D0C71E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B388BFE1D9709A700D0C71E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B388C041D970CAF00D0C71E /* RequestModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestModule.h; sourceTree = "<group>"; };
 		9B388C051D970CAF00D0C71E /* RequestModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestModule.m; sourceTree = "<group>"; };
@@ -68,6 +67,7 @@
 		9BE161CB1D97236D001691CA /* GroupsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsTableViewController.m; sourceTree = "<group>"; };
 		C0E620FD1D9780D4009019F7 /* TeamsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamsTableViewController.h; sourceTree = "<group>"; };
 		C0E620FE1D9780D4009019F7 /* TeamsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamsTableViewController.m; sourceTree = "<group>"; };
+		C0E621021D98292A009019F7 /* title.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = title.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,13 +128,13 @@
 				9BE161CB1D97236D001691CA /* GroupsTableViewController.m */,
 				9B388C041D970CAF00D0C71E /* RequestModule.h */,
 				9B388C051D970CAF00D0C71E /* RequestModule.m */,
+				C0E621021D98292A009019F7 /* title.jpg */,
 				9B388C071D970CEC00D0C71E /* LocationModule.h */,
 				9B388C081D970CEC00D0C71E /* LocationModule.m */,
 				9B388BF61D9709A700D0C71E /* Main.storyboard */,
 				C0E620FD1D9780D4009019F7 /* TeamsTableViewController.h */,
 				C0E620FE1D9780D4009019F7 /* TeamsTableViewController.m */,
 				9B388BF91D9709A700D0C71E /* Assets.xcassets */,
-				9B388BFB1D9709A700D0C71E /* LaunchScreen.storyboard */,
 				9B388BFE1D9709A700D0C71E /* Info.plist */,
 				9B388BED1D9709A700D0C71E /* Supporting Files */,
 			);
@@ -209,8 +209,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B388BFD1D9709A700D0C71E /* LaunchScreen.storyboard in Resources */,
 				9B388BFA1D9709A700D0C71E /* Assets.xcassets in Resources */,
+				C0E621031D98292A009019F7 /* title.jpg in Resources */,
 				9B388BF81D9709A700D0C71E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,14 +260,6 @@
 				9B388BF71D9709A700D0C71E /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		9B388BFB1D9709A700D0C71E /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9B388BFC1D9709A700D0C71E /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

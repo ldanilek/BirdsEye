@@ -28,7 +28,7 @@
     NSNumber *teamNumbers = [tempDict objectForKey:@"num_teams"];
     NSMutableArray *numElem = [NSMutableArray array];
     NSString *str = @"Team ";
-    for (int i = 0; i < [teamNumbers integerValue]; i++)
+    for (int i = 1; i <= [teamNumbers integerValue]; i++)
     {
         NSLog(@"enters the for loop");
         NSString *numstr = [NSString stringWithFormat:@"%i", i];
