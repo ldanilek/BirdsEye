@@ -30,18 +30,23 @@
 
 @property (strong, nonatomic) RequestModule *request;
 @property (strong, nonatomic) LocationModule *location;
+
+@property (nonatomic, weak) UILabel *speedLabel;
 @end
 
 @implementation MapViewController
 
+- (void)updateSpeedLabel {
+    self.speedLabel.text = [NSString stringWithFormat:@"%g, %g", [[LocationModule sharedModule] speed], [[LocationModule sharedModule] uncertaintyRadius]];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     UILabel *speedLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 700, 100)];
-    [[NSTimer scheduledTimerWithTimeInterval:0.1 repeats:YES block:^(NSTimer * _Nonnull timer) {
-        speedLabel.text = [NSString stringWithFormat:@"%g, %g", [[LocationModule sharedModule] speed], [[LocationModule sharedModule] uncertaintyRadius]];
-    }] fire];
+    [[NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateSpeedLabel) userInfo:nil repeats:YES] fire];
     speedLabel.textColor = [UIColor whiteColor];
     [self.view addSubview:speedLabel];
+    self.speedLabel = speedLabel;
     // Do any additional setup after loading the view, typically from a nib.
     //setup the timer
     
