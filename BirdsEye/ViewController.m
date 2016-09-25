@@ -43,8 +43,19 @@
 }
 
 - (IBAction)createGroup:(id)sender {
-    UIAlertController *groupNameRequest = [[UIAlertController alertControllerWithTitle:<#(nullable NSString *)#> message:<#(nullable NSString *)#> preferredStyle:<#(UIAlertControllerStyle)#>]
-    [self performSegueWithIdentifier:@"create" sender:sender];
+    UIAlertController *groupNameRequest = [UIAlertController alertControllerWithTitle:@"Enter Group Name" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    __block UITextField *groupNameField;
+    [groupNameRequest addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        groupNameField = textField;
+    }];
+    [groupNameRequest addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+     [groupNameRequest addAction:[UIAlertAction actionWithTitle:@"Play" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+         NSLog(@"Create group with name %@", groupNameField.text);
+         [self performSegueWithIdentifier:@"map" sender:sender];
+    }]];
+    [self presentViewController:groupNameRequest animated:YES completion:nil];
 }
 
 @end
