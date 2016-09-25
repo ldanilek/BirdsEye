@@ -62,9 +62,12 @@
     
     
     [self.mapView setScrollEnabled:false];
-    [self.mapView setZoomEnabled:false];
+    [self.mapView setZoomEnabled:true];
     [self.mapView setPitchEnabled:false];
     [self.mapView setRotateEnabled:false];
+    [self.mapView setZoomLevel:(double)18];
+    [self.mapView setMaximumZoomLevel:(double)25];
+    [self.mapView setMinimumZoomLevel:(double)15];
     
 //    //testing points
 //    // Specify coordinates for our annotations.
