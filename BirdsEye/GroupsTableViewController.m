@@ -9,6 +9,7 @@
 #import "GroupsTableViewController.h"
 #import "RequestModule.h"
 #import "TeamsTableViewController.h"
+#import "Storage.h"
 
 @interface GroupsTableViewController ()
 
@@ -91,7 +92,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    [[Storage sharedModule] setGroupId:(int)indexPath.row];
 }
 
 /*

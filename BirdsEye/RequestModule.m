@@ -9,6 +9,10 @@
 #import "RequestModule.h"
 #import "LocationModule.h"
 
+// @"http://192.168.116.158:8080"
+
+#define DOMAIN @"http://fd25b0f9.ngrok.io"
+
 @implementation RequestModule
 
 // shared module for use in other classes
@@ -41,8 +45,9 @@
                            };
     
 
+    
     // set url - .../create
-    NSURL *url = [NSURL URLWithString:@"http://fd25b0f9.ngrok.io/ping"];
+    NSURL *url = [NSURL URLWithString:DOMAIN @"/ping"];
 
     // instantiate requestModule obj
     RequestModule* temp = [RequestModule sharedModule];
@@ -62,7 +67,7 @@
                            @"teams": @(teams)
                            };
     // set url - .../create
-    NSURL *url = [NSURL URLWithString:@"http://fd25b0f9.ngrok.io/create"];
+    NSURL *url = [NSURL URLWithString:DOMAIN @"/create"];
 
     
     // instantiate requestModule obj
@@ -80,22 +85,20 @@
                            @"team": @(team)
                            };
     // set url - .../join
-    NSURL *url = [NSURL URLWithString:@"http://fd25b0f9.ngrok.io/join"];
+    NSURL *url = [NSURL URLWithString:DOMAIN @"/join"];
     
     // instantiate requestModule obj
     RequestModule* temp = [RequestModule sharedModule];
     
     // sends join Group info to server and does something with returned dictionary obj (undecided)
     [temp sendServerInfo:dict andURL:url andReturningData:callback];
-    
-    
 }
 
 // returns a mutable dictionary of the different groups and number of teams in each group
 - (void) getGroupInfoReturningData:(void(^)(NSDictionary*))callback
 {
     // set url - .../groups
-    NSURL *url = [NSURL URLWithString:@"http://fd25b0f9.ngrok.io/groups"];
+    NSURL *url = [NSURL URLWithString:DOMAIN @"/groups"];
     [self sendServerInfo:@{} andURL:url andReturningData:callback];
 }
 

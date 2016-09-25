@@ -31,9 +31,17 @@
 @property (nonatomic, weak) UILabel *speedLabel;
 
 @property (nonatomic) CALayer *spinnyRadar;
+@property (nonatomic) NSMutableArray *annotationViews;
 @end
 
 @implementation MapViewController
+
+- (NSMutableArray *)annotationViews {
+    if (!_annotationViews) {
+        _annotationViews = [NSMutableArray array];
+    }
+    return _annotationViews;
+}
 
 // shared module for use in other classes
 + (MapViewController *)sharedModule {
@@ -215,11 +223,11 @@
     
     // For better performance, always try to reuse existing annotations.
     CustomAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:reuseIdentifier];
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    /*CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     animation.duration = 2;
     animation.fromValue = @1.0f;
     animation.toValue = @0.0f;
-
+*/
     
     // If there’s no reusable annotation view available, initialize a new one.
     if (!annotationView) {
@@ -231,7 +239,8 @@
         annotationView.backgroundColor = [UIColor colorWithHue:hue saturation:0.5 brightness:1 alpha:1];
     }
     
-    [annotationView.layer addAnimation:animation forKey:@"opacity"];
+    //[annotationView.layer addAnimation:animation forKey:@"opacity"];
+    [self.annotationViews addObject:annotationView];
     
     return annotationView;
 }
@@ -253,6 +262,16 @@
             [_teamMap setObject:newData[@"team"] forKey:newData[@"id"]];
         }
     }
+    
+    for (UIView *annotation in self.annotationViews) {
+        annotation.alpha = 1;
+    }
+    [UIView animateWithDuration:2 animations:^{
+        for (UIView *annotation in self.annotationViews) {
+            annotation.alpha = 0;
+        }
+    }];
+    
     
     //remove users that are no longer sending location data
     // this functinonality is not implemented on the backend
