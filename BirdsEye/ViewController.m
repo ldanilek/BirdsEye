@@ -22,11 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // TODO: remove later
-
-    self.joinButton.enabled = NO;
-    self.createButton.enabled = NO;
-
 
     RequestModule* sample = [RequestModule sharedModule];
     // testing
