@@ -1,45 +1,30 @@
 //
-//  GroupsTableViewController.m
+//  TeamsTableViewController.m
 //  BirdsEye
 //
-//  Created by Lee on 9/24/16.
+//  Created by Shanelle Roman on 9/24/16.
 //  Copyright © 2016 Shanelle's Marauders. All rights reserved.
 //
 
-#import "GroupsTableViewController.h"
-#import "RequestModule.h"
+#import "TeamsTableViewController.h"
 
-@interface GroupsTableViewController ()
+@interface TeamsTableViewController ()
 
-@property (nonatomic) NSArray *groupInfo;
+// number of teams - will need to parse the JSON obj sent by server
+@property (nonatomic) NSArray *teamNames;
 
 @end
 
-@implementation GroupsTableViewController
-
--(NSArray *) getGroupInfo {
-    return _groupInfo;
-}
-
-- (void)cancelButtonPressed:(UIBarButtonItem *)sender {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-}
+@implementation TeamsTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView setBackgroundColor:[UIColor blackColor]];
-    [self.navigationController.navigationBar setBackgroundColor:[UIColor grayColor]];
-    
-    [[RequestModule sharedModule] getGroupInfoReturningData:^(NSDictionary *dict){
-        NSArray *nearbyGroups = dict[@"groups"];
-        
-        self.groupInfo = nearbyGroups;
-    }];
+    //TODO: local array of the team names - dummy names for now
+    NSArray *teams = @[@"team1", @"team2"];
+    self.teamNames = teams;
     
 
-    
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonPressed:)];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -55,39 +40,26 @@
 
 #pragma mark - Table view data source
 
+// assuming for now that we have team
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.groupInfo.count) {
-        return self.groupInfo.count;
-    } else {
-        return 1;
-    }
+    return self.teamNames.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"group-cell" forIndexPath:indexPath];
-    [cell setBackgroundColor: [UIColor blackColor]];
-    [cell.textLabel setTextColor:[UIColor lightTextColor]];
-     
-    if (!indexPath.row && !self.groupInfo.count) {
-        cell.textLabel.text = @"No groups available to join, try creating a group!";
-        cell.userInteractionEnabled = NO;
-    } else {
-        cell.textLabel.text = self.groupInfo[indexPath.row][@"name"];
-        cell.userInteractionEnabled = YES;
-    }
-       // Configure the cell...
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"team-cell" forIndexPath:indexPath];
+    cell.textLabel.text = self.teamNames[indexPath.row];
+
+    
+    // Configure the cell...
     
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-}
 
 /*
 // Override to support conditional editing of the table view.

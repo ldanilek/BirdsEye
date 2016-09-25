@@ -22,6 +22,7 @@
 		9B388C091D970CEC00D0C71E /* LocationModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B388C081D970CEC00D0C71E /* LocationModule.m */; };
 		9BE161C61D971A42001691CA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE161C51D971A42001691CA /* CoreLocation.framework */; };
 		9BE161CC1D97236D001691CA /* GroupsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE161CB1D97236D001691CA /* GroupsTableViewController.m */; };
+		C0E620FF1D9780D4009019F7 /* TeamsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E620FE1D9780D4009019F7 /* TeamsTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,6 +63,8 @@
 		9BE161C51D971A42001691CA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9BE161CA1D97236D001691CA /* GroupsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupsTableViewController.h; sourceTree = "<group>"; };
 		9BE161CB1D97236D001691CA /* GroupsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsTableViewController.m; sourceTree = "<group>"; };
+		C0E620FD1D9780D4009019F7 /* TeamsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamsTableViewController.h; sourceTree = "<group>"; };
+		C0E620FE1D9780D4009019F7 /* TeamsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +126,8 @@
 				9B388C071D970CEC00D0C71E /* LocationModule.h */,
 				9B388C081D970CEC00D0C71E /* LocationModule.m */,
 				9B388BF61D9709A700D0C71E /* Main.storyboard */,
+				C0E620FD1D9780D4009019F7 /* TeamsTableViewController.h */,
+				C0E620FE1D9780D4009019F7 /* TeamsTableViewController.m */,
 				9B388BF91D9709A700D0C71E /* Assets.xcassets */,
 				9B388BFB1D9709A700D0C71E /* LaunchScreen.storyboard */,
 				9B388BFE1D9709A700D0C71E /* Info.plist */,
@@ -232,6 +237,7 @@
 				9B388BF51D9709A700D0C71E /* ViewController.m in Sources */,
 				495518081D974E6600A01FC3 /* CustomAnnotationView.m in Sources */,
 				9B388C061D970CAF00D0C71E /* RequestModule.m in Sources */,
+				C0E620FF1D9780D4009019F7 /* TeamsTableViewController.m in Sources */,
 				495517F61D97133D00A01FC3 /* MapViewController.m in Sources */,
 				9B388BF21D9709A700D0C71E /* AppDelegate.m in Sources */,
 				9BE161CC1D97236D001691CA /* GroupsTableViewController.m in Sources */,
