@@ -10,7 +10,7 @@
 
 @interface RequestModule : NSObject
 
-// designated initializer
+// designated initializer -hello
 + (RequestModule *)sharedModule;
 
 // sends pingInfo to server and receives corresponding JSON obj
@@ -21,6 +21,8 @@
 
 // sends joinGroupInfo to server and receives corresponding JSON obj
 -(void) joinGroupInfo: (NSInteger) groupID andTeam: (NSInteger) team andReturningData:(void(^)(NSDictionary*))callback;
+
+- (void) getGroupInfoReturningData:(void(^)(NSDictionary*))callback;
 
 // sends and receives JSON data from server - utilizes asynchronous callback (lambda function) that takes care of returning obj
 - (void) sendServerInfo:(NSDictionary*) data andURL: (NSURL*) url andReturningData:(void(^)(NSDictionary*))callback;

@@ -76,39 +76,27 @@
                                     <segue destination="KTm-eM-v5R" kind="show" id="aNC-Sq-ve5"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j3T-ip-3fa">
-                                <frame key="frameInset" minX="244" minY="144" width="178" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="dTm-S1-enX" id="C97-gR-PjI"/>
-                                </connections>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="no9-NL-Cco" firstAttribute="centerX" secondItem="d1h-OC-b8T" secondAttribute="centerX" id="ES9-Td-Xd6"/>
-                            <constraint firstItem="j3T-ip-3fa" firstAttribute="top" secondItem="Aeu-57-Dhf" secondAttribute="bottom" constant="8" id="PiV-HR-Ilw"/>
+                            <constraint firstItem="TBL-Af-PMM" firstAttribute="top" secondItem="Aeu-57-Dhf" secondAttribute="bottom" constant="59" id="Hef-bz-JoH"/>
                             <constraint firstItem="Aeu-57-Dhf" firstAttribute="top" secondItem="hb6-He-HH4" secondAttribute="bottom" id="RcC-3p-gCW"/>
                             <constraint firstItem="Aeu-57-Dhf" firstAttribute="trailing" secondItem="d1h-OC-b8T" secondAttribute="trailingMargin" id="UEU-Ob-LMn"/>
                             <constraint firstItem="no9-NL-Cco" firstAttribute="top" secondItem="TBL-Af-PMM" secondAttribute="bottom" constant="8" id="Wxp-Dk-QYV"/>
                             <constraint firstItem="Aeu-57-Dhf" firstAttribute="leading" secondItem="d1h-OC-b8T" secondAttribute="leadingMargin" id="cvp-WS-iNM"/>
-                            <constraint firstItem="j3T-ip-3fa" firstAttribute="centerX" secondItem="d1h-OC-b8T" secondAttribute="centerX" id="fhz-zZ-cQP"/>
                             <constraint firstAttribute="centerXWithinMargins" secondItem="TBL-Af-PMM" secondAttribute="centerX" id="r9v-oE-duw"/>
-                            <constraint firstItem="TBL-Af-PMM" firstAttribute="top" secondItem="j3T-ip-3fa" secondAttribute="bottom" constant="21" id="y4u-Qt-bmC"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="createButton" destination="TBL-Af-PMM" id="Y5y-js-Drc"/>
                         <outlet property="joinButton" destination="no9-NL-Cco" id="6wT-5U-GSl"/>
-                        <outlet property="nameField" destination="j3T-ip-3fa" id="g0w-LO-Rhf"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="map" id="orS-Zw-teY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bkt-6t-UYA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1016.0419790104949" y="287.19999999999999"/>
+            <point key="canvasLocation" x="1279" y="-289"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XR8-Kd-IBG">
