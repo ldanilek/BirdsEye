@@ -146,10 +146,10 @@
             </objects>
             <point key="canvasLocation" x="2628" y="450"/>
         </scene>
-        <!--Teams Table View Controller-->
+        <!--Choose Team-->
         <scene sceneID="m34-LE-biT">
             <objects>
-                <tableViewController id="jMY-xF-M2s" customClass="TeamsTableViewController" sceneMemberID="viewController">
+                <tableViewController title="Choose Team" id="jMY-xF-M2s" customClass="TeamsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4ic-rC-fBo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
