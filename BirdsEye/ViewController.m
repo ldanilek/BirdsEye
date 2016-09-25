@@ -23,20 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-        //RequestModule* sample = [RequestModule sharedModule];
-    // testing
-    //[sample pingInfo:2 andGroupID:3 andReturningData:^(NSDictionary *returningData) {
-//        // to do soemthing later
-//    }];
-//    [sample joinGroupInfo:4 andTeam:6 andReturningData:^(NSDictionary *returningData) {
-//        // to do something later
-//    }];
-//    [sample createGroupInfo:@"Shaneyney's Marauders" andTeams:10 andReturningData:^(NSDictionary *returningData) {
-//        // to do something later
-//    }];
-//
 
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning {

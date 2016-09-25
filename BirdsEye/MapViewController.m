@@ -12,6 +12,8 @@
 #import "RequestModule.h"
 #import "LocationModule.h"
 
+#define WAIT_BETWEEN_PINGS (5)
+
 @interface MapViewController ()
 
 @property (strong, nonatomic) IBOutlet MGLMapView *mapView;
@@ -54,7 +56,7 @@
     if (!_spinnyRadar) {
         CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
         gradientLayer.colors = @[(id)[[UIColor clearColor] CGColor], (id)[[UIColor colorWithRed:0 green:1 blue:0 alpha:0.5] CGColor], (id)[[UIColor greenColor] CGColor]];
-        gradientLayer.frame = CGRectMake([[UIScreen mainScreen] bounds].size.width/2 - RADAR_WIDTH, 10, RADAR_WIDTH, RADAR_HEIGHT);
+        gradientLayer.frame = CGRectMake([[UIScreen mainScreen] bounds].size.width/2, 10, RADAR_WIDTH, RADAR_HEIGHT);
         gradientLayer.startPoint = CGPointMake(0, 0);
         gradientLayer.endPoint = CGPointMake(1, 0);
         gradientLayer.locations = @[@0.0, @0.85, @1.0];
@@ -86,14 +88,15 @@
     self.speedLabel = speedLabel;
     
     UIView *view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    view.backgroundColor = [UIColor whiteColor];
+    //view.backgroundColor = [UIColor whiteColor];
     
     [view.layer addSublayer:[self spinnyRadar]];
-    //[self.view addSubview:view];
+    [self.view addSubview:view];
     // Do any additional setup after loading the view, typically from a nib.
     //setup the timer
     
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:2
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:WAIT_BETWEEN_PINGS
+
                                                       target:self selector:@selector(updateCoordinates:)
                                                     userInfo:nil repeats:YES];
     self.repeatingTimer = timer;
@@ -158,8 +161,14 @@
             [self updateUserDict:newDict];
         }
     }];
+    [CATransaction begin];
+    [CATransaction setValue:[NSNumber numberWithFloat:WAIT_BETWEEN_PINGS]
+                     forKey:kCATransactionAnimationDuration];
+    [CATransaction setAnimationTimingFunction:[CAMediaTimingFunction functionWithName:@"linear"]];
     CGAffineTransform transformation = self.spinnyRadar.affineTransform;
     [self.spinnyRadar setAffineTransform:CGAffineTransformRotate(transformation, 1)];
+    // Perform the animations
+    [CATransaction commit];
     //temp
 //    NSDictionary *newDict = [[NSDictionary alloc] init];
 //    
