@@ -17,6 +17,10 @@
 
 @implementation GroupsTableViewController
 
+-(NSArray *) getGroupInfo {
+    return _groupInfo;
+}
+
 - (void)cancelButtonPressed:(UIBarButtonItem *)sender {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
