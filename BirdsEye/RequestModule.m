@@ -62,7 +62,7 @@
                            @"teams": @(teams)
                            };
     // set url - .../create
-    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8081/create"];
+    NSURL *url = [NSURL URLWithString:@"http://fd25b0f9.ngrok.io/create"];
     
     // instantiate requestModule obj
     RequestModule* temp = [RequestModule sharedModule];
