@@ -30,6 +30,7 @@
     if (!_manager) {
         _manager = [[CLLocationManager alloc] init];
         _manager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+        _manager.distanceFilter = kCLDistanceFilterNone; // get all updates
         _manager.delegate = self;
     }
     return _manager;
