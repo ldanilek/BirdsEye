@@ -79,6 +79,19 @@
     return _spinnyRadar;
 }
 
+#define BLUE_DOT_RADIUS (10)
+
+- (void)addUserBlueDot {
+    CGSize screenSize = self.view.bounds.size;
+    UIView *blueDot = [[UIView alloc] initWithFrame:CGRectMake(screenSize.width/2 - BLUE_DOT_RADIUS/2, screenSize.height - BLUE_DOT_RADIUS, BLUE_DOT_RADIUS, BLUE_DOT_RADIUS)];
+    UIBezierPath *dotPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(BLUE_DOT_RADIUS/2, BLUE_DOT_RADIUS/2) radius:BLUE_DOT_RADIUS/2 startAngle:0 endAngle:2*M_PI clockwise:YES];
+    CAShapeLayer *layer = [[CAShapeLayer alloc] init];
+    [layer setPath:[dotPath CGPath]];
+    [layer setFillColor:[[UIColor blueColor] CGColor]];
+    [blueDot.layer addSublayer:layer];
+    [self.view addSubview:blueDot];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     UILabel *speedLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 700, 100)];
