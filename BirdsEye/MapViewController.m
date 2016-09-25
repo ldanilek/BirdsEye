@@ -54,6 +54,9 @@
     //start updating location
     [self.location startUpdatingLocation];
     
+    
+    [self.mapView setScrollEnabled:false];
+    
 //    //testing points
 //    // Specify coordinates for our annotations.
 //    CLLocationCoordinate2D coordinates[] = {
