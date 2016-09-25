@@ -10,7 +10,7 @@
 
 @interface RequestModule : NSObject
 
-// designated initializer
+// designated initializer -hello
 + (RequestModule *)sharedModule;
 
 // sends pingInfo to server and receives corresponding JSON obj
