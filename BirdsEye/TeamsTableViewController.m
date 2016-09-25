@@ -40,7 +40,7 @@
 
 #pragma mark - Table view data source
 
-// assuming for now that we have  team
+// assuming for now that we have team
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
