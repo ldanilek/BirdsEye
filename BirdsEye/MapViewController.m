@@ -40,6 +40,27 @@
     self.speedLabel.text = [NSString stringWithFormat:@"%g, %g", [[LocationModule sharedModule] speed], [[LocationModule sharedModule] uncertaintyRadius]];
 }
 
+#define RADAR_HEIGHT (100)
+#define RADAR_WIDTH (30)
+
+- (CALayer *)spinnyRadar {
+    CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
+    gradientLayer.colors = @[(id)[[UIColor clearColor] CGColor], (id)[[UIColor greenColor] CGColor]];
+    gradientLayer.frame = CGRectMake(10, 10, RADAR_WIDTH, RADAR_HEIGHT);
+    gradientLayer.startPoint = CGPointMake(0, 0);
+    gradientLayer.endPoint = CGPointMake(1, 0);
+    
+    CAShapeLayer *triangleMask = [[CAShapeLayer alloc] init];
+    UIBezierPath *trianglePath = [UIBezierPath bezierPath];
+    [trianglePath moveToPoint:CGPointMake(RADAR_WIDTH, RADAR_HEIGHT)];
+    [trianglePath addLineToPoint:CGPointMake(RADAR_WIDTH, 0)];
+    //[trianglePath addArcWithCenter:CGPointMake(RADAR_WIDTH, RADAR_WIDTH) radius:RADAR_HEIGHT startAngle:<#(CGFloat)#> endAngle:<#(CGFloat)#> clockwise:<#(BOOL)#>]
+    //triangleMask.path = ;
+    
+    // the transparent parts of triangle-mask can
+    return gradientLayer;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     UILabel *speedLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 700, 100)];
@@ -47,6 +68,12 @@
     speedLabel.textColor = [UIColor whiteColor];
     [self.view addSubview:speedLabel];
     self.speedLabel = speedLabel;
+    
+    UIView *view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    view.backgroundColor = [UIColor whiteColor];
+    
+    [view.layer addSublayer:[self spinnyRadar]];
+    [self.view addSubview:view];
     // Do any additional setup after loading the view, typically from a nib.
     //setup the timer
     
