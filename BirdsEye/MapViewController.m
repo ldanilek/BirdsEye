@@ -11,6 +11,7 @@
 #import "CustomAnnotationView.h"
 #import "RequestModule.h"
 #import "LocationModule.h"
+#import "Storage.h"
 
 #define WAIT_BETWEEN_PINGS (10)
 
@@ -159,7 +160,7 @@
 -(void)updateCoordinates:(NSTimer*)timer {
     [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake([self.location latitude], [self.location longitude])];
     //call shanelle's update function here, the rest of this probably goes in a callback
-    [self.request pingInfo:self.userId andGroupID:self.groupId andReturningData:^(NSDictionary *newDict) {
+    [self.request pingInfo:[[Storage sharedModule] userId] andGroupID:[[Storage sharedModule] groupId] andReturningData:^(NSDictionary *newDict) {
         if (newDict) {
             [self updateUserDict:newDict];
         }
