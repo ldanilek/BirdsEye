@@ -34,6 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //UILabel *speedLabel = [UILabel alloc] initWithFrame:CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
     // Do any additional setup after loading the view, typically from a nib.
     //setup the timer
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.5
