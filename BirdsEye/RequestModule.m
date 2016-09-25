@@ -42,7 +42,7 @@
     
 
     // set url - .../create
-    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8082/ping"];
+    NSURL *url = [NSURL URLWithString:@"http://fd25b0f9.ngrok.io/ping"];
 
     // instantiate requestModule obj
     RequestModule* temp = [RequestModule sharedModule];
@@ -62,7 +62,7 @@
                            @"teams": @(teams)
                            };
     // set url - .../create
-    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8081/create"];
+    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000"];
     
     // instantiate requestModule obj
     RequestModule* temp = [RequestModule sharedModule];
@@ -79,7 +79,7 @@
                            @"team": @(team)
                            };
     // set url - .../join
-    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8080/join"];
+    NSURL *url = [NSURL URLWithString:@"http://ovote-server.herokuapp.com/group"];
     
     // instantiate requestModule obj
     RequestModule* temp = [RequestModule sharedModule];
@@ -94,7 +94,7 @@
 - (void) getGroupInfoReturningData:(void(^)(NSDictionary*))callback
 {
     // set url - .../groups
-    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8082/groups"];
+    NSURL *url = [NSURL URLWithString:@"http://fd25b0f9.ngrok.io/groups"];
     [self sendServerInfo:@{} andURL:url andReturningData:callback];
 }
 
@@ -107,7 +107,7 @@
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:&error];
     
     // configures NSURL session
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
     
     // creates NSURL request
@@ -116,6 +116,8 @@
     
     // sets method type and body
     [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:jsonData];
     
     // sends the data
