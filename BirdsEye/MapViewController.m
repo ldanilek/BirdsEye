@@ -36,7 +36,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //UILabel *speedLabel = [UILabel alloc] initWithFrame:CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
+    UILabel *speedLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    [[NSTimer scheduledTimerWithTimeInterval:0.1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        speedLabel.text = [NSString stringWithFormat:@"%g", [[LocationModule sharedModule] speed]];
+    }] fire];
     // Do any additional setup after loading the view, typically from a nib.
     //setup the timer
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.5
