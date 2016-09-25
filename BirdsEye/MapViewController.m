@@ -19,9 +19,6 @@
 
 @property (strong, nonatomic) NSMutableDictionary *userDict;
 @property (strong, nonatomic) NSMutableDictionary *teamMap;
-@property MGLPointAnnotation *point;
-@property float x;
-@property float y;
 
 
 //important info storage, maybe shouldnt go here?
