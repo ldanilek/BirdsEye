@@ -38,7 +38,9 @@
        NSArray *nearbyGroups = dict[@"groups"];
 
         self.groupInfo = nearbyGroups;
-        [self.tableView reloadData];
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self.tableView reloadData];
+        }];
         
 
     }];
