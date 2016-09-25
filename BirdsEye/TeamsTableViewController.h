@@ -10,4 +10,7 @@
 
 @interface TeamsTableViewController : UITableViewController
 
+@property (nonatomic, strong) NSDictionary *teamNames;
+
+
 @end
