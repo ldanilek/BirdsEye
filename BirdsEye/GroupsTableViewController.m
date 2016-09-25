@@ -34,16 +34,12 @@
     [self.navigationController.navigationBar setBackgroundColor:[UIColor grayColor]];
     
     [[RequestModule sharedModule] getGroupInfoReturningData:^(NSDictionary *dict){
-       // NSArray *nearbyGroups = dict[@"groups"];
-        
-        NSArray *fakeGroups = [NSArray arrayWithObjects:
-        @{@"name": @"Team-Alex", @"group_id": @12, @"num_teams": @6},
-        @{@"name": @"Team-Lee", @"group_id": @6, @"num_teams": @2}, nil
-             ];
-        
-        
-        self.groupInfo = fakeGroups;
+       NSArray *nearbyGroups = dict[@"groups"];
+
+        self.groupInfo = nearbyGroups;
         [self.tableView reloadData];
+        
+
     }];
     
 
