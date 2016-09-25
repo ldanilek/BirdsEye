@@ -215,6 +215,11 @@
     
     // For better performance, always try to reuse existing annotations.
     CustomAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:reuseIdentifier];
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    animation.duration = 2;
+    animation.fromValue = @1.0f;
+    animation.toValue = @0.0f;
+
     
     // If there’s no reusable annotation view available, initialize a new one.
     if (!annotationView) {
@@ -225,6 +230,8 @@
         CGFloat hue = (CGFloat)1;
         annotationView.backgroundColor = [UIColor colorWithHue:hue saturation:0.5 brightness:1 alpha:1];
     }
+    
+    [annotationView.layer addAnimation:animation forKey:@"opacity"];
     
     return annotationView;
 }
