@@ -13,7 +13,7 @@
 #import "LocationModule.h"
 #import "Storage.h"
 
-#define WAIT_BETWEEN_PINGS (10)
+#define WAIT_BETWEEN_PINGS (5)
 
 @interface MapViewController ()
 

@@ -24,6 +24,12 @@
     self.layer.cornerRadius = self.frame.size.width / 2;
     self.layer.borderWidth = 2;
     self.layer.borderColor = [UIColor redColor].CGColor;
+    
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    animation.duration = 2;
+    animation.fromValue = @1.0f;
+    animation.toValue = @0.0f;
+    [self.layer addAnimation:animation forKey:@"opacity"];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
