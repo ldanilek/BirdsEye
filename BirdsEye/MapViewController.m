@@ -50,7 +50,7 @@
                                                     userInfo:nil repeats:YES];
     self.repeatingTimer = timer;
     
-    
+    //test commit
     //setup userDict
     self.userDict = [[NSMutableDictionary alloc] init];
     self.teamMap = [[NSMutableDictionary alloc] init];
@@ -59,6 +59,9 @@
     self.location = [LocationModule sharedModule];
     //start updating location
     [self.location startUpdatingLocation];
+    
+    
+    [self.mapView setScrollEnabled:false];
     
 //    //testing points
 //    // Specify coordinates for our annotations.
