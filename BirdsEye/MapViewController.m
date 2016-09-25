@@ -9,6 +9,8 @@
 #import "MapViewController.h"
 #import <MapBox/Mapbox.h>
 #import "CustomAnnotationView.h"
+#import "RequestModule.h"
+#import "LocationModule.h"
 
 @interface MapViewController ()
 
@@ -26,23 +28,46 @@
 @property int teamId;
 @property int userId;
 
+@property (strong, nonatomic) RequestModule *request;
+@property (strong, nonatomic) LocationModule *location;
 @end
 
 @implementation MapViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UILabel *speedLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 700, 100)];
+    [[NSTimer scheduledTimerWithTimeInterval:0.1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        speedLabel.text = [NSString stringWithFormat:@"%g, %g", [[LocationModule sharedModule] speed], [[LocationModule sharedModule] uncertaintyRadius]];
+    }] fire];
+    speedLabel.textColor = [UIColor whiteColor];
+    [self.view addSubview:speedLabel];
     // Do any additional setup after loading the view, typically from a nib.
     //setup the timer
+    
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.5
                                                       target:self selector:@selector(updateCoordinates:)
                                                     userInfo:nil repeats:YES];
     self.repeatingTimer = timer;
     
-    
+    //test commit
     //setup userDict
     self.userDict = [[NSMutableDictionary alloc] init];
     self.teamMap = [[NSMutableDictionary alloc] init];
+    
+    self.request = [RequestModule sharedModule];
+    self.location = [LocationModule sharedModule];
+    //start updating location
+    [self.location startUpdatingLocation];
+    
+    
+    [self.mapView setScrollEnabled:false];
+    [self.mapView setZoomEnabled:false];
+    [self.mapView setPitchEnabled:false];
+    [self.mapView setRotateEnabled:false];
+    [self.mapView setZoomLevel:(double)18];
+    //[self.mapView setMaximumZoomLevel:(double)25];
+    //[self.mapView setMinimumZoomLevel:(double)15];
     
 //    //testing points
 //    // Specify coordinates for our annotations.
@@ -78,12 +103,17 @@
 }
 
 -(void)updateCoordinates:(NSTimer*)timer {
+    [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake([self.location latitude], [self.location longitude])];
     //call shanelle's update function here, the rest of this probably goes in a callback
-    
+    [self.request pingInfo:self.userId andGroupID:self.groupId andReturningData:^(NSDictionary *newDict) {
+        if (newDict) {
+            [self updateUserDict:newDict];
+        }
+    }];
     //temp
-    NSDictionary *newDict = [[NSDictionary alloc] init];
-    
-    [self updateUserDict:newDict];
+//    NSDictionary *newDict = [[NSDictionary alloc] init];
+//    
+//    [self updateUserDict:newDict];
     
     //sometimes were probably going to want to make annotations visible or invisible, we can do that here
     
