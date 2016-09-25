@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "RequestModule.h"
+#import "MapViewController.h"
 
 @interface ViewController () <UITextFieldDelegate>
 
@@ -61,7 +62,10 @@
     }]];
      [groupNameRequest addAction:[UIAlertAction actionWithTitle:@"Play" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
          NSLog(@"Create group with name %@ number of teams %@", groupNameField.text, teamNumberField.text);
-         [self performSegueWithIdentifier:@"map" sender:sender];
+         [[RequestModule sharedModule] createGroupInfo:groupNameField.text andTeams:[teamNumberField.text intValue] andReturningData:^(NSDictionary *dict) {
+             [[MapViewController sharedModule] setGroupId:[dict[@"group_id"] intValue]];
+             [self performSegueWithIdentifier:@"map" sender:sender];
+         }];
     }]];
     [self presentViewController:groupNameRequest animated:YES completion:nil];
 }
