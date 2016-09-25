@@ -21,7 +21,7 @@
 }
 
 // returns NSDictionary object with info needed for a ping to the server
-- (void) pingInfo: (NSInteger) userID andGroupID: (NSInteger) groupID
+- (void) pingInfo: (NSInteger) userID andGroupID: (NSInteger) groupID andReturningData:(void(^)(NSDictionary*))callback
 {
     // initializes location module object
     LocationModule * module = [LocationModule sharedModule];
@@ -46,16 +46,13 @@
     RequestModule* temp = [RequestModule sharedModule];
 
     // sends join Group info to server and saves responding JSON
-    [temp sendServerInfo:dict andURL:url andReturningData:^(NSDictionary *returningData) {
-        //TODO: save the info somewhere!
-        NSLog(@"successfully saved CREATE GROUP info technically");
-    }];
+    [temp sendServerInfo:dict andURL:url andReturningData:callback];
 
 
 }
 
 // returns NSDictionary object with info needed to create Group
--(void) createGroupInfo: (NSString*) groupName andTeams: (NSInteger) teams {
+-(void) createGroupInfo: (NSString*) groupName andTeams: (NSInteger) teams andReturningData:(void(^)(NSDictionary*))callback{
     
     // creates dictionary obj and returns it
     NSDictionary *dict = @{
@@ -77,7 +74,7 @@
 }
 
 // returns NSDictionary object with info needed to join Group -
--(void) joinGroupInfo: (NSInteger) groupID andTeam: (NSInteger) team {
+-(void) joinGroupInfo: (NSInteger) groupID andTeam: (NSInteger) team andReturningData:(void(^)(NSDictionary*))callback{
     // creates dictionary obj and returns it
     NSDictionary *dict = @{
                            @"group_id": @(groupID),
