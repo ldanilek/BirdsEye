@@ -72,7 +72,7 @@
 
 - (BOOL)mapView:(MGLMapView *)mapView annotationCanShowCallout:(id <MGLAnnotation>)annotation {
     // Always try to show a callout when an annotation is tapped.
-    return YES;
+    return NO;
 }
 
 - (void)didReceiveMemoryWarning {
