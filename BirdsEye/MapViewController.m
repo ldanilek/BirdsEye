@@ -234,21 +234,23 @@
         annotationView = [[CustomAnnotationView alloc] initWithReuseIdentifier:reuseIdentifier];
         annotationView.frame = CGRectMake(0, 0, 12, 12);
         
-        // Set the annotation view’s background color to a value determined by its longitude.
-        NSArray *temp = [_userDict allKeysForObject:annotation];
-        NSString *userId = [temp lastObject];
         
-        if ([_teamMap[userId] intValue] == [[Storage sharedModule] teamId]) {
-            CGFloat hue = (CGFloat)1;
-            annotationView.backgroundColor = [UIColor colorWithRed:0 green:1 blue:.5 alpha:1];
-            annotationView.layer.borderColor = [UIColor yellowColor].CGColor;
-
-        } else {
-            CGFloat hue = (CGFloat)1;
-            annotationView.backgroundColor = [UIColor colorWithHue:hue saturation:0.5 brightness:1 alpha:1];
-            annotationView.layer.borderColor = [UIColor redColor].CGColor;
-
-        }
+    }
+    
+    // Set the annotation view’s background color to a value determined by its longitude.
+    NSArray *temp = [_userDict allKeysForObject:annotation];
+    NSString *userId = [temp lastObject];
+    
+    
+    if ([_teamMap[userId] intValue] == [[Storage sharedModule] teamId]) {
+        annotationView.backgroundColor = [UIColor colorWithRed:0 green:1 blue:.5 alpha:1];
+        annotationView.layer.borderColor = [UIColor yellowColor].CGColor;
+        
+    } else {
+        CGFloat hue = (CGFloat)1;
+        annotationView.backgroundColor = [UIColor colorWithHue:hue saturation:0.5 brightness:1 alpha:1];
+        annotationView.layer.borderColor = [UIColor redColor].CGColor;
+        
     }
     
     //[annotationView.layer addAnimation:animation forKey:@"opacity"];
