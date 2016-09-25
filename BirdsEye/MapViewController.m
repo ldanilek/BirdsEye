@@ -10,6 +10,7 @@
 #import <MapBox/Mapbox.h>
 #import "CustomAnnotationView.h"
 #import "RequestModule.h"
+#import "LocationModule.h"
 
 @interface MapViewController ()
 
@@ -28,6 +29,7 @@
 @property int userId;
 
 @property (strong, nonatomic) RequestModule *request;
+@property (strong, nonatomic) LocationModule *location;
 @end
 
 @implementation MapViewController
@@ -47,6 +49,7 @@
     self.teamMap = [[NSMutableDictionary alloc] init];
     
     self.request = [RequestModule sharedModule];
+    self.location = [LocationModule sharedModule];
 //    //testing points
 //    // Specify coordinates for our annotations.
 //    CLLocationCoordinate2D coordinates[] = {
@@ -81,6 +84,7 @@
 }
 
 -(void)updateCoordinates:(NSTimer*)timer {
+    [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake([self.location latitude], [self.location longitude])];
     //call shanelle's update function here, the rest of this probably goes in a callback
     [self.request pingInfo:self.userId andGroupID:self.groupId andReturningData:^(NSDictionary *newDict) {
         if (newDict) {
