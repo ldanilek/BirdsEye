@@ -62,7 +62,8 @@
                            @"teams": @(teams)
                            };
     // set url - .../create
-    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000"];
+    NSURL *url = [NSURL URLWithString:@"http://fd25b0f9.ngrok.io/create"];
+
     
     // instantiate requestModule obj
     RequestModule* temp = [RequestModule sharedModule];
@@ -79,7 +80,7 @@
                            @"team": @(team)
                            };
     // set url - .../join
-    NSURL *url = [NSURL URLWithString:@"http://ovote-server.herokuapp.com/group"];
+    NSURL *url = [NSURL URLWithString:@"http://fd25b0f9.ngrok.io/join"];
     
     // instantiate requestModule obj
     RequestModule* temp = [RequestModule sharedModule];

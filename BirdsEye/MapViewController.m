@@ -26,6 +26,8 @@
 @property (strong, nonatomic) LocationModule *location;
 
 @property (nonatomic, weak) UILabel *speedLabel;
+
+@property (nonatomic) CALayer *spinnyRadar;
 @end
 
 @implementation MapViewController
@@ -45,25 +47,34 @@
     self.speedLabel.text = [NSString stringWithFormat:@"%g, %g", [[LocationModule sharedModule] speed], [[LocationModule sharedModule] uncertaintyRadius]];
 }
 
-#define RADAR_HEIGHT (100)
-#define RADAR_WIDTH (30)
+#define RADAR_HEIGHT (120)
+#define RADAR_WIDTH (40)
 
 - (CALayer *)spinnyRadar {
-    CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
-    gradientLayer.colors = @[(id)[[UIColor clearColor] CGColor], (id)[[UIColor greenColor] CGColor]];
-    gradientLayer.frame = CGRectMake(10, 10, RADAR_WIDTH, RADAR_HEIGHT);
-    gradientLayer.startPoint = CGPointMake(0, 0);
-    gradientLayer.endPoint = CGPointMake(1, 0);
-    
-    CAShapeLayer *triangleMask = [[CAShapeLayer alloc] init];
-    UIBezierPath *trianglePath = [UIBezierPath bezierPath];
-    [trianglePath moveToPoint:CGPointMake(RADAR_WIDTH, RADAR_HEIGHT)];
-    [trianglePath addLineToPoint:CGPointMake(RADAR_WIDTH, 0)];
-    //[trianglePath addArcWithCenter:CGPointMake(RADAR_WIDTH, RADAR_WIDTH) radius:RADAR_HEIGHT startAngle:<#(CGFloat)#> endAngle:<#(CGFloat)#> clockwise:<#(BOOL)#>]
-    //triangleMask.path = ;
-    
-    // the transparent parts of triangle-mask can
-    return gradientLayer;
+    if (!_spinnyRadar) {
+        CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
+        gradientLayer.colors = @[(id)[[UIColor clearColor] CGColor], (id)[[UIColor colorWithRed:0 green:1 blue:0 alpha:0.5] CGColor], (id)[[UIColor greenColor] CGColor]];
+        gradientLayer.frame = CGRectMake([[UIScreen mainScreen] bounds].size.width/2 - RADAR_WIDTH, 10, RADAR_WIDTH, RADAR_HEIGHT);
+        gradientLayer.startPoint = CGPointMake(0, 0);
+        gradientLayer.endPoint = CGPointMake(1, 0);
+        gradientLayer.locations = @[@0.0, @0.85, @1.0];
+        gradientLayer.anchorPoint = CGPointMake(1, 1);
+
+        CAShapeLayer *triangleMask = [[CAShapeLayer alloc] init];
+        UIBezierPath *trianglePath = [UIBezierPath bezierPath];
+        [trianglePath moveToPoint:CGPointMake(RADAR_WIDTH, RADAR_HEIGHT)];
+        [trianglePath addLineToPoint:CGPointMake(RADAR_WIDTH, 0)];
+        double angle = atan2(RADAR_WIDTH, RADAR_HEIGHT);
+        [trianglePath addArcWithCenter:CGPointMake(RADAR_WIDTH, RADAR_HEIGHT) radius:RADAR_HEIGHT startAngle:3*M_PI_2 endAngle:3*M_PI_2-angle clockwise:NO];
+        [trianglePath addLineToPoint:CGPointMake(RADAR_WIDTH, RADAR_HEIGHT)];
+        triangleMask.path = [trianglePath CGPath];
+        triangleMask.fillColor = [UIColor blackColor].CGColor;
+        
+        // the transparent parts of triangle-mask can
+        [gradientLayer setMask:triangleMask];
+        _spinnyRadar = gradientLayer;
+    }
+    return _spinnyRadar;
 }
 
 - (void)viewDidLoad {
@@ -82,7 +93,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     //setup the timer
     
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.5
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:2
                                                       target:self selector:@selector(updateCoordinates:)
                                                     userInfo:nil repeats:YES];
     self.repeatingTimer = timer;
@@ -147,6 +158,8 @@
             [self updateUserDict:newDict];
         }
     }];
+    CGAffineTransform transformation = self.spinnyRadar.affineTransform;
+    [self.spinnyRadar setAffineTransform:CGAffineTransformRotate(transformation, 1)];
     //temp
 //    NSDictionary *newDict = [[NSDictionary alloc] init];
 //    

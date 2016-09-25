@@ -8,6 +8,7 @@
 
 #import "GroupsTableViewController.h"
 #import "RequestModule.h"
+#import "TeamsTableViewController.h"
 
 @interface GroupsTableViewController ()
 
@@ -17,9 +18,10 @@
 
 @implementation GroupsTableViewController
 
+/*
 -(NSArray *) getGroupInfo {
     return _groupInfo;
-}
+} */
 
 - (void)cancelButtonPressed:(UIBarButtonItem *)sender {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
@@ -32,9 +34,16 @@
     [self.navigationController.navigationBar setBackgroundColor:[UIColor grayColor]];
     
     [[RequestModule sharedModule] getGroupInfoReturningData:^(NSDictionary *dict){
-        NSArray *nearbyGroups = dict[@"groups"];
+       NSArray *nearbyGroups = dict[@"groups"];
+        
+        NSArray *fakeGroups = [NSArray arrayWithObjects:
+        @{@"name": @"Team-Alex", @"group_id": @12, @"num_teams": @6},
+        @{@"name": @"Team-Lee", @"group_id": @6, @"num_teams": @2}, nil
+             ];
         
         self.groupInfo = nearbyGroups;
+        [self.tableView reloadData];
+        
     }];
     
 
@@ -123,14 +132,27 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell*)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"to-team-list"])
+    {
+
+        // Get reference to the destination view controller
+        TeamsTableViewController *vc = [segue destinationViewController];
+        
+        NSInteger index = [self.tableView indexPathForCell:sender].row;
+        
+        // Pass the teamNames info for the group that was clicked
+        [vc setTeamNames: _groupInfo [index]];
+    }
 }
-*/
+
 
 @end

@@ -10,8 +10,7 @@
 
 @interface TeamsTableViewController ()
 
-// number of teams - will need to parse the JSON obj sent by server
-@property (nonatomic) NSArray *teamNames;
+@property(nonatomic) NSMutableArray* numElem;
 
 @end
 
@@ -19,10 +18,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     
     //TODO: local array of the team names - dummy names for now
-    NSArray *teams = @[@"team1", @"team2"];
-    self.teamNames = teams;
+    //NSString *groupName = [_teamNames objectForKey:@"name"];
+    NSDictionary *tempDict = _teamNames;
+    NSNumber *teamNumbers = [tempDict objectForKey:@"num_teams"];
+    NSMutableArray *numElem = [NSMutableArray array];
+    NSString *str = @"Team ";
+    for (int i = 0; i < [teamNumbers integerValue]; i++)
+    {
+        NSLog(@"enters the for loop");
+        NSString *numstr = [NSString stringWithFormat:@"%i", i];
+        //[numElem addObject:@"hello"];
+        [numElem addObject: [str stringByAppendingString: numstr]];
+    }
+
+    
+    self.numElem = numElem;
+
     
 
     
@@ -46,15 +60,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.teamNames.count;
+    return self.numElem.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"team-cell" forIndexPath:indexPath];
-    cell.textLabel.text = self.teamNames[indexPath.row];
+    cell.textLabel.text = self.numElem[indexPath.row];
 
-    
     // Configure the cell...
     
     return cell;
