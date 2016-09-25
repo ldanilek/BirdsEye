@@ -12,7 +12,7 @@
 #import "RequestModule.h"
 #import "LocationModule.h"
 
-#define WAIT_BETWEEN_PINGS (5)
+#define WAIT_BETWEEN_PINGS (10)
 
 @interface MapViewController ()
 
@@ -43,20 +43,19 @@
     return module;
 }
 
-
-
 - (void)updateSpeedLabel {
     self.speedLabel.text = [NSString stringWithFormat:@"%g, %g", [[LocationModule sharedModule] speed], [[LocationModule sharedModule] uncertaintyRadius]];
 }
 
-#define RADAR_HEIGHT (120)
-#define RADAR_WIDTH (40)
+#define RADAR_HEIGHT (350)
+#define RADAR_WIDTH (90)
 
 - (CALayer *)spinnyRadar {
     if (!_spinnyRadar) {
         CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
-        gradientLayer.colors = @[(id)[[UIColor clearColor] CGColor], (id)[[UIColor colorWithRed:0 green:1 blue:0 alpha:0.5] CGColor], (id)[[UIColor greenColor] CGColor]];
-        gradientLayer.frame = CGRectMake([[UIScreen mainScreen] bounds].size.width/2, 10, RADAR_WIDTH, RADAR_HEIGHT);
+        gradientLayer.colors = @[(id)[[UIColor clearColor] CGColor], (id)[[UIColor colorWithRed:0 green:1 blue:0 alpha:0.5] CGColor], (id)[[UIColor colorWithRed:0 green:1 blue:0 alpha:0.8] CGColor]];
+        CGSize screenSize = self.view.bounds.size;
+        gradientLayer.frame = CGRectMake([[UIScreen mainScreen] bounds].size.width/2-RADAR_WIDTH/2, screenSize.height/2 - RADAR_HEIGHT/2, RADAR_WIDTH, RADAR_HEIGHT);
         gradientLayer.startPoint = CGPointMake(0, 0);
         gradientLayer.endPoint = CGPointMake(1, 0);
         gradientLayer.locations = @[@0.0, @0.85, @1.0];
@@ -93,13 +92,6 @@
     [view.layer addSublayer:[self spinnyRadar]];
     [self.view addSubview:view];
     // Do any additional setup after loading the view, typically from a nib.
-    //setup the timer
-    
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:WAIT_BETWEEN_PINGS
-
-                                                      target:self selector:@selector(updateCoordinates:)
-                                                    userInfo:nil repeats:YES];
-    self.repeatingTimer = timer;
     
     //test commit
     //setup userDict
@@ -141,6 +133,17 @@
 //    
 //    [self.mapView addAnnotations:pointAnnotations];
     
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    //setup the timer
+    
+    [self updateCoordinates:nil];
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:WAIT_BETWEEN_PINGS
+                                                      target:self selector:@selector(updateCoordinates:)
+                                                    userInfo:nil repeats:YES];
+    self.repeatingTimer = timer;
 }
 
 - (BOOL)mapView:(MGLMapView *)mapView annotationCanShowCallout:(id <MGLAnnotation>)annotation {
