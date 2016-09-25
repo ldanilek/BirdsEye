@@ -18,9 +18,16 @@
 
 
 @property (strong, nonatomic) NSMutableDictionary *userDict;
+@property (strong, nonatomic) NSMutableDictionary *teamMap;
 @property MGLPointAnnotation *point;
 @property float x;
 @property float y;
+
+
+//important info storage, maybe shouldnt go here?
+@property int groupId;
+@property int teamId;
+@property int userId;
 
 @end
 
@@ -29,19 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
-    //set up voodoo donut store
-    self.point = [[MGLPointAnnotation alloc] init];
-    self.point.coordinate = CLLocationCoordinate2DMake(45.52258, -122.6732); //change this to read from location module eventually
-    self.point.title = @"Voodoo Doughnut";
-    self.point.subtitle = @"22 SW 3rd Avenue Portland Oregon, U.S.A.";
-    
-    //temp: setup x, y
-    self.x = 45.52258f;
-    self.y = -122.6732f;
-    
     //setup the timer
-    [self.mapView addAnnotation:self.point];
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.5
                                                       target:self selector:@selector(updateCoordinates:)
                                                     userInfo:nil repeats:YES];
@@ -50,27 +45,28 @@
     
     //setup userDict
     self.userDict = [[NSMutableDictionary alloc] init];
+    self.teamMap = [[NSMutableDictionary alloc] init];
     
-    //testing points
-    // Specify coordinates for our annotations.
-    CLLocationCoordinate2D coordinates[] = {
-        CLLocationCoordinate2DMake(0, 33),
-        CLLocationCoordinate2DMake(0, 66),
-        CLLocationCoordinate2DMake(0, 99),
-    };
-    NSUInteger numberOfCoordinates = sizeof(coordinates) / sizeof(CLLocationCoordinate2D);
-    
-    // Fill an array with point annotations and add it to the map.
-    NSMutableArray *pointAnnotations = [NSMutableArray arrayWithCapacity:numberOfCoordinates];
-    for (NSUInteger i = 0; i < numberOfCoordinates; i++) {
-        CLLocationCoordinate2D coordinate = coordinates[i];
-        MGLPointAnnotation *point = [[MGLPointAnnotation alloc] init];
-        point.coordinate = coordinate;
-        point.title = [NSString stringWithFormat:@"%.f, %.f", coordinate.latitude, coordinate.longitude];
-        [pointAnnotations addObject:point];
-    }
-    
-    [self.mapView addAnnotations:pointAnnotations];
+//    //testing points
+//    // Specify coordinates for our annotations.
+//    CLLocationCoordinate2D coordinates[] = {
+//        CLLocationCoordinate2DMake(0, 33),
+//        CLLocationCoordinate2DMake(0, 66),
+//        CLLocationCoordinate2DMake(0, 99),
+//    };
+//    NSUInteger numberOfCoordinates = sizeof(coordinates) / sizeof(CLLocationCoordinate2D);
+//    
+//    // Fill an array with point annotations and add it to the map.
+//    NSMutableArray *pointAnnotations = [NSMutableArray arrayWithCapacity:numberOfCoordinates];
+//    for (NSUInteger i = 0; i < numberOfCoordinates; i++) {
+//        CLLocationCoordinate2D coordinate = coordinates[i];
+//        MGLPointAnnotation *point = [[MGLPointAnnotation alloc] init];
+//        point.coordinate = coordinate;
+//        point.title = [NSString stringWithFormat:@"%.f, %.f", coordinate.latitude, coordinate.longitude];
+//        [pointAnnotations addObject:point];
+//    }
+//    
+//    [self.mapView addAnnotations:pointAnnotations];
     
 }
 
@@ -79,18 +75,21 @@
     return YES;
 }
 
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 -(void)updateCoordinates:(NSTimer*)timer {
-    //NSLog(@"asdf");
-    self.x = self.x+.0001f;
-    self.y = self.y+.0001f;
-    self.point.coordinate = CLLocationCoordinate2DMake(self.x, self.y);
+    //call shanelle's update function here, the rest of this probably goes in a callback
+    
+    //temp
+    NSDictionary *newDict = [[NSDictionary alloc] init];
+    
+    [self updateUserDict:newDict];
+    
+    //sometimes were going to want to make annotations visible or invisible, we can do that here
+    
 }
 
 - (MGLAnnotationView *)mapView:(MGLMapView *)mapView viewForAnnotation:(id <MGLAnnotation>)annotation {
@@ -116,6 +115,41 @@
     }
     
     return annotationView;
+}
+
+-(void)updateUserDict:(NSDictionary*) newDict {
+    NSArray *array = newDict[@"locations"];
+    for (NSDictionary *newData in array) {
+        //if user exists in the existing data, update them
+        MGLPointAnnotation *point;
+        if ((point = _userDict[newData[@"id"]]) != NULL) {
+            point.coordinate = CLLocationCoordinate2DMake([newData[@"latitude"] doubleValue], [newData[@"longitude"] doubleValue]);
+        } else {
+            //create them
+            point = [[MGLPointAnnotation alloc] init];
+            NSLog(@"adding user %@", newData[@"id"]);
+            point.coordinate = CLLocationCoordinate2DMake([newData[@"latitude"] doubleValue], [newData[@"longitude"] doubleValue]);
+            [self.mapView addAnnotation:point];
+            [_userDict setObject:point forKey:newData[@"id"]];
+            [_teamMap setObject:newData[@"team"] forKey:newData[@"id"]];
+        }
+    }
+    
+    //remove users that are no longer sending location data
+    for(id key in _userDict) {
+        MGLPointAnnotation *point = [_userDict objectForKey:key];
+        BOOL found = false;
+        for (NSDictionary *newData in array) {
+            if (newData[@"id"] == key) {
+                found = true;
+            }
+        }
+        if (!found) {
+            NSLog(@"removing user %@", key);
+            [self.mapView removeAnnotation:point];
+            [_userDict removeObjectForKey:key];
+        }
+    }
 }
 
 @end
