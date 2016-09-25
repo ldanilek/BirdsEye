@@ -16,7 +16,7 @@
 
 +(Storage*)sharedModule;
 
-//important info storage, maybe shouldnt go here?
+//important info storage
 @property int groupId;
 @property int teamId;
 @property int userId;

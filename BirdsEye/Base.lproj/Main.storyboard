@@ -91,7 +91,7 @@
                     <connections>
                         <outlet property="createButton" destination="TBL-Af-PMM" id="Y5y-js-Drc"/>
                         <outlet property="joinButton" destination="no9-NL-Cco" id="6wT-5U-GSl"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="map" id="orS-Zw-teY"/>
+                        <segue destination="pXf-lT-1OH" kind="show" identifier="team" id="F7r-aT-pjg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bkt-6t-UYA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -146,6 +146,22 @@
             </objects>
             <point key="canvasLocation" x="2628" y="450"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="z6J-tH-igK">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uch-Qw-OSV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="pXf-lT-1OH" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="scf-Tc-Vzg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="jMY-xF-M2s" kind="relationship" relationship="rootViewController" id="usC-wG-Q0N"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="2318" y="-986"/>
+        </scene>
         <!--Choose Team-->
         <scene sceneID="m34-LE-biT">
             <objects>
@@ -163,7 +179,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" id="H3b-fO-whR"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="map" id="H3b-fO-whR"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -172,13 +188,14 @@
                             <outlet property="delegate" destination="jMY-xF-M2s" id="Qdf-tl-B7s"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Choose Team" id="hRM-SO-nbp"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6QZ-hb-0zJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3719" y="81"/>
+            <point key="canvasLocation" x="2158" y="48"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="H3b-fO-whR"/>
+        <segue reference="usC-wG-Q0N"/>
     </inferredMetricsTieBreakers>
 </document>
