@@ -80,14 +80,20 @@
 }
 
 #define BLUE_DOT_RADIUS (10)
+#define BLUE_DOT_BORDER (12)
 
 - (void)addUserBlueDot {
     CGSize screenSize = self.view.bounds.size;
-    UIView *blueDot = [[UIView alloc] initWithFrame:CGRectMake(screenSize.width/2 - BLUE_DOT_RADIUS/2, screenSize.height - BLUE_DOT_RADIUS, BLUE_DOT_RADIUS, BLUE_DOT_RADIUS)];
-    UIBezierPath *dotPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(BLUE_DOT_RADIUS/2, BLUE_DOT_RADIUS/2) radius:BLUE_DOT_RADIUS/2 startAngle:0 endAngle:2*M_PI clockwise:YES];
+    UIView *blueDot = [[UIView alloc] initWithFrame:CGRectMake(screenSize.width/2 - BLUE_DOT_BORDER/2, screenSize.height/2 - BLUE_DOT_BORDER/2, BLUE_DOT_BORDER, BLUE_DOT_BORDER)];
+    UIBezierPath *dotPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(BLUE_DOT_BORDER/2, BLUE_DOT_BORDER/2) radius:BLUE_DOT_RADIUS/2 startAngle:0 endAngle:2*M_PI clockwise:YES];
+    UIBezierPath *borderPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(BLUE_DOT_BORDER/2, BLUE_DOT_BORDER/2) radius:BLUE_DOT_BORDER/2 startAngle:0 endAngle:2*M_PI clockwise:YES];
     CAShapeLayer *layer = [[CAShapeLayer alloc] init];
     [layer setPath:[dotPath CGPath]];
     [layer setFillColor:[[UIColor blueColor] CGColor]];
+    CAShapeLayer *borderLayer = [[CAShapeLayer alloc] init];
+    [borderLayer setFillColor:[[UIColor colorWithRed:0.3 green:0.3 blue:1 alpha:1] CGColor]];
+    [borderLayer setPath:[borderPath CGPath]];
+    [blueDot.layer addSublayer:borderLayer];
     [blueDot.layer addSublayer:layer];
     [self.view addSubview:blueDot];
 }
@@ -152,7 +158,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     //setup the timer
-    
+    [self addUserBlueDot];
     [self updateCoordinates:nil];
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:WAIT_BETWEEN_PINGS
                                                       target:self selector:@selector(updateCoordinates:)
