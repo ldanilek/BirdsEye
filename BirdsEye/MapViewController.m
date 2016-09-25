@@ -85,7 +85,7 @@
     
     [self updateUserDict:newDict];
     
-    //sometimes were going to want to make annotations visible or invisible, we can do that here
+    //sometimes were probably going to want to make annotations visible or invisible, we can do that here
     
 }
 
