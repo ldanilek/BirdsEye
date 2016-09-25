@@ -71,13 +71,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"group-cell" forIndexPath:indexPath];
     [cell setBackgroundColor: [UIColor blackColor]];
-    [cell.textLabel setTextColor:[UIColor blueColor]];
+    [cell.textLabel setTextColor:[UIColor lightTextColor]];
      
     if (!indexPath.row && !self.groupInfo.count) {
         cell.textLabel.text = @"No groups available to join, try creating a group!";
+        cell.userInteractionEnabled = NO;
     } else {
         cell.textLabel.text = self.groupInfo[indexPath.row][@"name"];
-
+        cell.userInteractionEnabled = YES;
     }
        // Configure the cell...
     
@@ -86,14 +87,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-}
-
--(NSIndexPath *) tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (!indexPath.row && !self.groupInfo.count) {
-        return nil;
-    } else {
-        return indexPath;
-    }
 }
 
 /*
