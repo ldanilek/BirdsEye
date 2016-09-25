@@ -91,38 +91,11 @@
 }
 
 // returns a mutable dictionary of the different groups and number of teams in each group
-- (NSMutableDictionary*) getGroupInfo
+- (void) getGroupInfoReturningData:(void(^)(NSDictionary*))callback
 {
     // set url - .../groups
     NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8082/groups"];
-    
-    // configures NSURL session
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
-    
-    // creates NSURL request
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
-                                    initWithURL: url];
-    
-    // sets method type
-    [request setHTTPMethod:@"GET"];
-    
-    //gets the data
-    NSURLSessionDataTask *jsonData = [session dataTaskWithURL:url completionHandler:^NSDictionary*(NSData * groupsData, NSURLResponse * response, NSError *error){
-        
-        // parses groupData into dictionary
-        // no error checking right now in case groups Data is nil - how to mimic the method below?
-        NSError *rerror = nil;
-        NSDictionary *responseJSON = [NSJSONSerialization JSONObjectWithData:groupsData options:NSJSONReadingMutableContainers error:&rerror];
-        return responseJSON;
-    }];
-
-    
-    
-    
-    
-    
-    
+    [self sendServerInfo:@{} andURL:url andReturningData:callback];
 }
 
 //connects to server - sends appropriate JSON object and receives corresponding info in a callback function
