@@ -7,6 +7,8 @@
 //
 
 #import "TeamsTableViewController.h"
+#import "RequestModule.h"
+#import "Storage.h"
 
 @interface TeamsTableViewController ()
 
@@ -30,7 +32,6 @@
     {
         NSLog(@"enters the for loop");
         NSString *numstr = [NSString stringWithFormat:@"%i", i];
-        //[numElem addObject:@"hello"];
         [numElem addObject: [str stringByAppendingString: numstr]];
     }
 
@@ -117,5 +118,17 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    RequestModule *sharedmodule = [RequestModule sharedModule];
+    [[Storage sharedModule] setTeamId:(int)indexPath.row];
+    [sharedmodule joinGroupInfo:[[Storage sharedModule] groupId] andTeam:indexPath.row andReturningData:^(NSDictionary *dict) {
+        [[Storage sharedModule] setUserId: [dict [@"id"] intValue]];
+        
+    }];
+    // do the segue
+    [self performSegueWithIdentifier:@"map" sender:nil];
+    
+}
 
 @end

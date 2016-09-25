@@ -10,6 +10,7 @@
 #import "RequestModule.h"
 #import "MapViewController.h"
 #import "Storage.h"
+#import "TeamsTableViewController.h"
 
 @interface ViewController () <UITextFieldDelegate>
 
@@ -58,11 +59,30 @@
              [[Storage sharedModule] setGroupId:[dict[@"group_id"] intValue]];
      
              [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                 [self performSegueWithIdentifier:@"map" sender:sender];
+                 [self performSegueWithIdentifier:@"team" sender:@(numTeams)];
              }];
          }];
     }]];
     [self presentViewController:groupNameRequest animated:YES completion:nil];
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSNumber*)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    
+    // Make sure your segue name in storyboard is the same as this line
+    if ([[segue identifier] isEqualToString:@"team"])
+    {
+        
+        // Get reference to the destination view controller
+        UINavigationController *nc = [segue destinationViewController];
+        
+        TeamsTableViewController *vc = [nc viewControllers].firstObject;
+        [vc setTeamNames:@{@"num_teams": sender}];
+        
+        
+    }
+}
+
 
 @end
