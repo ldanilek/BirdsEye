@@ -78,7 +78,7 @@
     view.backgroundColor = [UIColor whiteColor];
     
     [view.layer addSublayer:[self spinnyRadar]];
-    [self.view addSubview:view];
+    //[self.view addSubview:view];
     // Do any additional setup after loading the view, typically from a nib.
     //setup the timer
     
